@@ -43,10 +43,7 @@ class GetDataHelper {
         let request = URLRequest(url: url)
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data {
-                print(data)
-                print(T.self)
                 let decodedData = try? JSONDecoder().decode(T.self, from: data)
-                print(decodedData)
                 DispatchQueue.main.async {
                     guard let decodedResponse = decodedData else {
                         endofrequest(.failure(.JsonDecodingFailed))

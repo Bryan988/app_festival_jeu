@@ -4,13 +4,9 @@
 
 import Foundation
 
-struct GamesData : Codable {
-    var result : [GameData]
-}
-
 struct GameData : Codable {
     var libelleJeu:String
-    var nombreJoueur:Int
+    var nombreJoueur:String
     var ageMinimum:Int
     var duree:String
     var prototype:Bool
@@ -56,10 +52,10 @@ struct JeuHelper{
     func loadAllGames(endofrequest: @escaping (Result<[Jeu],HttpRequestError>) -> Void){
         let getDataHelper = GetDataHelper()
         getDataHelper.httpGetJsonData(from: "http://localhost:8080/api/games/") {
-            (result: Result<GamesData, HttpRequestError>) in
+            (result: Result<[GameData], HttpRequestError>) in
             switch result{
             case let .success(data):
-                guard let games = JeuHelper.gameData2game(data: data.result) else {
+                guard let games = JeuHelper.gameData2game(data: data) else {
                     endofrequest(.failure(.JsonDecodingFailed))
                     return
                 }

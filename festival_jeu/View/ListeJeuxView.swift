@@ -5,19 +5,21 @@
 import SwiftUI
 
 struct ListeJeuxView: View {
-    @ObservedObject var listeJeux : GroupeJeuViewModel
-    var intent : ListeJeuxIntent
+    @State var listeJeux = GroupeJeuViewModel(groupeJeu: GroupeJeu())
+    @State var intent = ListeJeuxIntent(listeJeux: GroupeJeuViewModel(groupeJeu: GroupeJeu()))
 
     init() {
-        let groupJeuVMinit = GroupeJeuViewModel(groupeJeu: GroupeJeu())
-        listeJeux = groupJeuVMinit
-        intent = ListeJeuxIntent(listeJeux: groupJeuVMinit)
-        print("hello")
+        loadGames()
+    }
+
+    func loadGames() {
         let jeuHelper = JeuHelper()
         jeuHelper.loadAllGames() { result in
             switch result {
             case let .success(data):
-                print(data)
+                let groupJeuVMinit = GroupeJeuViewModel(groupeJeu: GroupeJeu(jeux: data))
+                self.listeJeux = groupJeuVMinit
+                self.intent = ListeJeuxIntent(listeJeux: groupJeuVMinit)
                 break;
             case let .failure(error):
                 print(error)
@@ -27,13 +29,21 @@ struct ListeJeuxView: View {
     }
 
     init(listeJeux : GroupeJeuViewModel,intent:ListeJeuxIntent){
-        self.listeJeux=listeJeux
+        self.listeJeux = listeJeux
         self.intent=intent
     }
 
     var body: some View {
-        Text("Hello, world!")
-                .padding()
+        VStack{
+            List{
+                ForEach(listeJeux.listeJeux){ g in
+                    HStack{
+                        Text("\(g.libelleJeu)")
+                        Spacer()
+                    }.foregroundColor(.red)
+                }
+            }
+        }
     }
 }
 

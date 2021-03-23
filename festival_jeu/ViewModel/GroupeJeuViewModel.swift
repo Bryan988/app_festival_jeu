@@ -31,7 +31,11 @@ class GroupeJeuViewModel:Identifiable,ObservableObject{
     init(groupeJeu:GroupeJeu) {
         self.groupeJeu=groupeJeu
         self.listeJeux=[]
+        for g in groupeJeu.jeux{
+            self.listeJeux.append(JeuViewModel(jeu: g))
+        }
     }
+
     func getJeux()->[JeuViewModel]{
         return self.listeJeux
     }

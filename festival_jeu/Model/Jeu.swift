@@ -6,13 +6,13 @@ import Foundation
 
 class Jeu {
     private(set) var libelleJeu:String
-    private(set) var nombreJoueur:Int
+    private(set) var nombreJoueur:String
     private(set) var ageMinimum:Int
     private(set) var duree:String
     private(set) var prototype:Bool
     private(set) var nomPersonne:String
 
-    init(nomJeu: String, nombreJoueur: Int, ageMinimum: Int, duree: String, prototype: Bool,nomPersonne:String) {
+    init(nomJeu: String, nombreJoueur: String, ageMinimum: Int, duree: String, prototype: Bool,nomPersonne:String) {
         self.libelleJeu = nomJeu
         self.nombreJoueur = nombreJoueur
         self.ageMinimum = ageMinimum
@@ -20,6 +20,5 @@ class Jeu {
         self.prototype = prototype
         self.nomPersonne=nomPersonne
     }
-
 
 }

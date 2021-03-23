@@ -9,7 +9,7 @@ class JeuViewModel:Identifiable{
     let id = UUID()
     private var jeu:Jeu
     private(set) var libelleJeu:String
-    private(set) var nombreJoueur:Int
+    private(set) var nombreJoueur:String
     private(set) var ageMinimum:Int
     private(set) var duree:String
     private(set) var prototype:Bool
@@ -23,6 +23,5 @@ class JeuViewModel:Identifiable{
         self.duree = jeu.duree
         self.prototype = jeu.prototype
         self.nomPersonne=jeu.nomPersonne
-
     }
 }
