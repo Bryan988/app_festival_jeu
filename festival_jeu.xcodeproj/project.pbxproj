@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2182F085FC2370170AE8A537 /* festival_jeuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182FE29E23B73578A6B4CF5 /* festival_jeuApp.swift */; };
 		2182F39A5C7E737DDBD726DC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2182F1CFDC7BB7A55A70A93E /* Preview Assets.xcassets */; };
+		2182F6011CD935E0FC312343 /* JeuHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182FF561A922C850AFA1DDA /* JeuHelper.swift */; };
+		2182F7FA51B98CF1FE4F3073 /* GetDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182F3E2697ECFD118E264EF /* GetDataHelper.swift */; };
 		2182F9E2C8C8BEC9A653D1A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2182FEE9C4760A3DBED10685 /* Assets.xcassets */; };
 		2182FA8DA43B5B4BD09FB2C8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182F321E83D2EC3D968F29C /* ContentView.swift */; };
 		2182FFAEC20B82332BE84B57 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2182FF2952D4A542ED07E6D2 /* .gitignore */; };
@@ -17,11 +19,13 @@
 /* Begin PBXFileReference section */
 		2182F1CFDC7BB7A55A70A93E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2182F321E83D2EC3D968F29C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2182F3E2697ECFD118E264EF /* GetDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetDataHelper.swift; sourceTree = "<group>"; };
 		2182F6B2DAD362653E3EADA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		2182FE29E23B73578A6B4CF5 /* festival_jeuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = festival_jeuApp.swift; sourceTree = "<group>"; };
 		2182FEDA92FA1BDC9FE4B8F0 /* festival_jeu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = festival_jeu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2182FEE9C4760A3DBED10685 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2182FF2952D4A542ED07E6D2 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
+		2182FF561A922C850AFA1DDA /* JeuHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JeuHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,14 +66,56 @@
 		2182FC6CC861A33C01518AD1 /* festival_jeu */ = {
 			isa = PBXGroup;
 			children = (
+				EBC6495B2609E96500DDC0B5 /* Model */,
+				EBC649592609E93700DDC0B5 /* ViewModel */,
+				EBC649582609E92F00DDC0B5 /* Intent */,
+				EBC649572609E91D00DDC0B5 /* View */,
 				2182F6B2DAD362653E3EADA8 /* Info.plist */,
 				2182FEE9C4760A3DBED10685 /* Assets.xcassets */,
 				2182F4FA71B6C338689226C9 /* Preview Content */,
 				2182FE29E23B73578A6B4CF5 /* festival_jeuApp.swift */,
 				2182F321E83D2EC3D968F29C /* ContentView.swift */,
 				2182FF2952D4A542ED07E6D2 /* .gitignore */,
+				2182FEBC5EC372964B823155 /* Helper */,
 			);
 			path = festival_jeu;
+			sourceTree = "<group>";
+		};
+		2182FEBC5EC372964B823155 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				2182FF561A922C850AFA1DDA /* JeuHelper.swift */,
+				2182F3E2697ECFD118E264EF /* GetDataHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		EBC649572609E91D00DDC0B5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EBC649582609E92F00DDC0B5 /* Intent */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Intent;
+			sourceTree = "<group>";
+		};
+		EBC649592609E93700DDC0B5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EBC6495B2609E96500DDC0B5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -97,11 +143,14 @@
 /* Begin PBXProject section */
 		2182F8A935BB787459BEA3AA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = 2182F362B99CB2C227744D69 /* Build configuration list for PBXProject "festival_jeu" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 2182F33BA71A159C2B8833CF;
@@ -134,6 +183,8 @@
 			files = (
 				2182F085FC2370170AE8A537 /* festival_jeuApp.swift in Sources */,
 				2182FA8DA43B5B4BD09FB2C8 /* ContentView.swift in Sources */,
+				2182F6011CD935E0FC312343 /* JeuHelper.swift in Sources */,
+				2182F7FA51B98CF1FE4F3073 /* GetDataHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,8 +257,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -309,6 +359,7 @@
 				2182F826CE4BCB2E25401A2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
