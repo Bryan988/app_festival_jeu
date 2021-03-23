@@ -7,20 +7,40 @@ import SwiftUI
 struct ListeJeuxView: View {
     @ObservedObject var listeJeux : GroupeJeuViewModel
     var intent : ListeJeuxIntent
-    var body: some View {
 
-        Text("Hello, world!")
-                .padding()
+    init() {
+        let groupJeuVMinit = GroupeJeuViewModel(groupeJeu: GroupeJeu())
+        listeJeux = groupJeuVMinit
+        intent = ListeJeuxIntent(listeJeux: groupJeuVMinit)
+        print("hello")
+        let jeuHelper = JeuHelper()
+        jeuHelper.loadAllGames() { result in
+            switch result {
+            case let .success(data):
+                print(data)
+                break;
+            case let .failure(error):
+                print(error)
+                break;
+            }
+        }
     }
+
     init(listeJeux : GroupeJeuViewModel,intent:ListeJeuxIntent){
         self.listeJeux=listeJeux
         self.intent=intent
+    }
+
+    var body: some View {
+        Text("Hello, world!")
+                .padding()
     }
 }
 
 struct ListeJeuxView_Preview: PreviewProvider {
     static var previews: some View {
-        ListeJeuxView(listeJeux: GroupeJeuViewModel(groupeJeu: GroupeJeu()), intent: <#T##ListeJeuxIntent##festival_jeu.ListeJeuxIntent#>)
+        ListeJeuxView(listeJeux: GroupeJeuViewModel(groupeJeu: GroupeJeu()),
+                intent: ListeJeuxIntent(listeJeux: GroupeJeuViewModel(groupeJeu: GroupeJeu())))
     }
 }
 

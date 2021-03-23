@@ -4,42 +4,71 @@
 
 import Foundation
 
-struct GameData : Decodable {
-    var libelleJeu:String?
-    var nombreJoueur:Int?
-    var ageMinimum:Int?
-    var duree:String?
-    var prototype:Bool?
-    var nomPersonne:String?
+struct GamesData : Codable {
+    var result : [GameData]
+}
+
+struct GameData : Codable {
+    var libelleJeu:String
+    var nombreJoueur:Int
+    var ageMinimum:Int
+    var duree:String
+    var prototype:Bool
+    var nomPersonne:String
 }
 
 // The data of a zone
-struct ZoneData : Decodable {
+struct ZoneData : Codable {
 
 }
 
 // The data of an editor
-struct Editeur : Decodable {
+struct Editeur : Codable {
 
 }
 
 
 struct JeuHelper{
 
+    // Translate a list of gamesData into a list of games
+    static func gameData2game(data: [GameData]) -> [Jeu]?{
+        var games = [Jeu]()
+        for game in data{
+            let newGame = Jeu(nomJeu: game.libelleJeu,nombreJoueur: game.nombreJoueur, ageMinimum: game.ageMinimum,
+                    duree: game.duree,prototype: game.prototype, nomPersonne: game.nomPersonne)
+            games.append(newGame)
+        }
+        return games
+    }
 
-    static func loadAllGames(fromFile filename: String) -> Result<[GameData],HttpRequestError>{
+    // Translate a list of games into a list of games data
+    static func game2GameData(data: [Jeu]) -> [GameData]{
+        var gamesData = [GameData]()
+        for game in data{
+            let gameData = GameData(libelleJeu: game.libelleJeu,nombreJoueur: game.nombreJoueur, ageMinimum: game.ageMinimum,
+                    duree: game.duree,prototype: game.prototype, nomPersonne: game.nomPersonne)
+            gamesData.append(gameData)
+        }
+        return gamesData
+    }
+
+    // We ask the server to retrieve all the games
+    func loadAllGames(endofrequest: @escaping (Result<[Jeu],HttpRequestError>) -> Void){
         let getDataHelper = GetDataHelper()
         getDataHelper.httpGetJsonData(from: "http://localhost:8080/api/games/") {
-            (result: Result<[GameData], HttpRequestError>) in
+            (result: Result<GamesData, HttpRequestError>) in
             switch result{
             case let .success(data):
-                guard let games = self.trackData2Track(data: data) else { return .failure(.JsonDecodingFailed) }
-                return .success(games)
+                guard let games = JeuHelper.gameData2game(data: data.result) else {
+                    endofrequest(.failure(.JsonDecodingFailed))
+                    return
+                }
+                endofrequest(.success(games))
+                return
             case let .failure(error):
-                return .failure(error)
+                endofrequest(.failure(error))
+                return
             }
         }
     }
-
-    func
 }

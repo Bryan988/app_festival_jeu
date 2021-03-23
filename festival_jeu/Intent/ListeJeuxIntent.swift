@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class ListeJeuxIntent{
     @ObservedObject var listeJeux : GroupeJeuViewModel

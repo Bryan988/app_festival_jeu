@@ -3,6 +3,7 @@
 //
 
 import Foundation
+
 class Jeu {
     private(set) var libelleJeu:String
     private(set) var nombreJoueur:Int
