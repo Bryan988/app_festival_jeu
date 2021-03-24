@@ -49,9 +49,9 @@ struct JeuHelper{
     }
 
     // We ask the server to retrieve all the games
-    func loadAllGames(endofrequest: @escaping (Result<[Jeu],HttpRequestError>) -> Void){
+    static func loadAllGames(endofrequest: @escaping (Result<[Jeu],HttpRequestError>) -> Void){
         let getDataHelper = GetDataHelper()
-        getDataHelper.httpGetJsonData(from: "http://localhost:8080/api/games/") {
+        getDataHelper.httpGetJsonData(from: "https://festival-jeu-montpellier.herokuapp.com/api/games/") {
             (result: Result<[GameData], HttpRequestError>) in
             switch result{
             case let .success(data):

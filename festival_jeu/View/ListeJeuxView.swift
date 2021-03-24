@@ -5,54 +5,50 @@
 import SwiftUI
 
 struct ListeJeuxView: View {
-    @State var listeJeux = GroupeJeuViewModel(groupeJeu: GroupeJeu())
-    @State var intent = ListeJeuxIntent(listeJeux: GroupeJeuViewModel(groupeJeu: GroupeJeu()))
-
-    init() {
-        loadGames()
+    @ObservedObject var listeJeux : GroupeJeuViewModel
+    var intent : ListeJeuxIntent
+    private var jeuState : LoadingState{
+        return self.listeJeux.loadingState
     }
 
-    func loadGames() {
-        let jeuHelper = JeuHelper()
-        jeuHelper.loadAllGames() { result in
-            switch result {
-            case let .success(data):
-                let groupJeuVMinit = GroupeJeuViewModel(groupeJeu: GroupeJeu(jeux: data))
-                self.listeJeux = groupJeuVMinit
-                self.intent = ListeJeuxIntent(listeJeux: groupJeuVMinit)
-                break;
-            case let .failure(error):
-                print(error)
-                break;
-            }
+    init(listeJeux l:GroupeJeuViewModel) {
+        print("nice")
+        self.listeJeux  = l
+        self.intent     = ListeJeuxIntent(listeJeux: l)
+        let _  = self.listeJeux.$loadingState.sink(receiveValue: stateChanged)
+
+    }
+    func stateChanged(state:LoadingState){
+        switch state {
+        case .initState : self.intent.loadJeux()
+        default:break
         }
     }
+
 
     init(listeJeux : GroupeJeuViewModel,intent:ListeJeuxIntent){
         self.listeJeux = listeJeux
         self.intent=intent
     }
+    func loadData(){
+        self.intent.loadJeux()
+    }
 
     var body: some View {
         VStack{
             List{
-                ForEach(listeJeux.listeJeux){ g in
+                ForEach(listeJeux.listeJeux){ game in
                     HStack{
-                        Text("\(g.libelleJeu)")
+                        Text("\(game.libelleJeu)")
                         Spacer()
                     }.foregroundColor(.red)
                 }
             }
+            ErrorView(state: jeuState)
         }
     }
 }
 
-struct ListeJeuxView_Preview: PreviewProvider {
-    static var previews: some View {
-        ListeJeuxView(listeJeux: GroupeJeuViewModel(groupeJeu: GroupeJeu()),
-                intent: ListeJeuxIntent(listeJeux: GroupeJeuViewModel(groupeJeu: GroupeJeu())))
-    }
-}
 
 struct ErrorView : View{
     let state : LoadingState

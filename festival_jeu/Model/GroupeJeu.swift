@@ -9,6 +9,7 @@ class GroupeJeu{
 
     init(jeux: [Jeu]) {
         self.jeux = jeux
+        print(self.jeux)
     }
     init(){
         self.jeux=[]

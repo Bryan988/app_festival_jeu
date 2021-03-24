@@ -9,15 +9,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var JeuVM : GroupeJeuViewModel = GroupeJeuViewModel(groupeJeu: GroupeJeu())
+    @State private var tabSelected = 0
+
+
+
     var body: some View {
-        NavigationView{
-            VStack(alignment: .center){
-                Button("Zones"){ print("Tapped") }
-                Button("Editeurs"){ print("Tapped") }
-                NavigationLink(destination: ListeJeuxView()){
-                    Text("Jeux")
-                }
-            }
+
+        TabView(selection: $tabSelected){
+            ListeZoneView()
+                    .tabItem {Label("Zone",systemImage : "list.dash")}.tag(0)
+
+            ListeJeuxView(listeJeux: JeuVM)
+            .tabItem {Label("Jeux",systemImage : "list.dash")}.tag(1)
         }
     }
 }

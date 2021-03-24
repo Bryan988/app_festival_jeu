@@ -10,6 +10,7 @@
 		2182F085FC2370170AE8A537 /* festival_jeuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182FE29E23B73578A6B4CF5 /* festival_jeuApp.swift */; };
 		2182F1E6320109EB8BE8B536 /* GetDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182F4041B32B4A8948C2B89 /* GetDataHelper.swift */; };
 		2182F39A5C7E737DDBD726DC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2182F1CFDC7BB7A55A70A93E /* Preview Assets.xcassets */; };
+		2182F781C4D2D246F1473CBF /* ListeZoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182FAF135F6E7EF56AEC1FF /* ListeZoneView.swift */; };
 		2182F7E2434B42D753AA39BD /* JeuHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182F072C79AFF83D972672E /* JeuHelper.swift */; };
 		2182F9E2C8C8BEC9A653D1A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2182FEE9C4760A3DBED10685 /* Assets.xcassets */; };
 		2182FFAEC20B82332BE84B57 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2182FF2952D4A542ED07E6D2 /* .gitignore */; };
@@ -27,6 +28,7 @@
 		2182F1CFDC7BB7A55A70A93E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2182F4041B32B4A8948C2B89 /* GetDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetDataHelper.swift; sourceTree = "<group>"; };
 		2182F6B2DAD362653E3EADA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		2182FAF135F6E7EF56AEC1FF /* ListeZoneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeZoneView.swift; sourceTree = "<group>"; };
 		2182FE29E23B73578A6B4CF5 /* festival_jeuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = festival_jeuApp.swift; sourceTree = "<group>"; };
 		2182FEDA92FA1BDC9FE4B8F0 /* festival_jeu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = festival_jeu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2182FEE9C4760A3DBED10685 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			children = (
 				2FAB70DE48DC6B0D614DA2DB /* ContentView.swift */,
 				2FAB7570FD50A5D5F657B227 /* ListeJeuxView.swift */,
+				2182FAF135F6E7EF56AEC1FF /* ListeZoneView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				2FAB7EF2C8EEFE36D131AA58 /* ListeJeuxIntent.swift in Sources */,
 				2182F1E6320109EB8BE8B536 /* GetDataHelper.swift in Sources */,
 				2182F7E2434B42D753AA39BD /* JeuHelper.swift in Sources */,
+				2182F781C4D2D246F1473CBF /* ListeZoneView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

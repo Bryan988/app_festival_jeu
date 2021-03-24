@@ -17,11 +17,17 @@ class GroupeJeuViewModel:Identifiable,ObservableObject{
     @Published var loadingState : LoadingState = .initState {
         didSet {
             switch self.loadingState{
+            case let.loading(msg):
+                print(msg)
             case let .loaded(data):
                 self.groupeJeu.new(jeux:data)
+                for g in data{
+                    self.listeJeux.append(JeuViewModel(jeu: g))
+                }
+                print(self.listeJeux)
 
             case .loadingError:
-                return
+                print("error")
             default:
                 return
             }
@@ -39,4 +45,5 @@ class GroupeJeuViewModel:Identifiable,ObservableObject{
     func getJeux()->[JeuViewModel]{
         return self.listeJeux
     }
+
 }
