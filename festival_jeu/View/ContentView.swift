@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var JeuVM : GroupeJeuViewModel = GroupeJeuViewModel(groupeJeu: GroupeJeu())
-    @State private var tabSelected = 0
+    @State private var tabSelected = 1
 
 
 

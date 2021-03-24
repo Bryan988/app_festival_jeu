@@ -41,7 +41,7 @@ struct ListeJeuxView: View {
                     HStack{
                         Text("\(game.libelleJeu)")
                         Spacer()
-                    }.foregroundColor(.red)
+                    }.foregroundColor(.blue)
                 }
             }
             ErrorView(state: jeuState)
@@ -56,7 +56,7 @@ struct ErrorView : View{
         VStack{
             Spacer()
             switch state{
-            case .loading, .loaded:
+            case .loading:
                 ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .blue))
                         .scaleEffect(3)
@@ -66,7 +66,7 @@ struct ErrorView : View{
                 EmptyView()
             }
             if case let .loaded(data) = state{
-                Text("\(data.count) tracks found!")
+                Text("\(data.count) Jeux présents!")
             }
             Spacer()
         }
