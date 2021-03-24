@@ -28,6 +28,9 @@ class GroupeJeuViewModel:Identifiable,ObservableObject{
 
             case .loadingError:
                 print("error")
+            case .initState :
+                self.listeJeux.removeAll()
+
             default:
                 return
             }

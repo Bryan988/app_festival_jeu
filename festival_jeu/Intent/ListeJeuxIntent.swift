@@ -35,5 +35,8 @@ class ListeJeuxIntent{
             }
 
     }
+    func refresh(){
+        self.listeJeux.loadingState = .initState
+    }
 
 }

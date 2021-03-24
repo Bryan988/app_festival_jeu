@@ -45,6 +45,9 @@ struct ListeJeuxView: View {
                 }
             }
             ErrorView(state: jeuState)
+            Button("Refresh"){
+                intent.refresh()
+            }
         }
     }
 }
