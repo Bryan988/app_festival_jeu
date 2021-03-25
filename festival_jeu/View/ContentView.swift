@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var JeuVM : GroupeJeuViewModel = GroupeJeuViewModel(groupeJeu: GroupeJeu())
+    @StateObject var ZoneVM : GroupeZoneViewModel = GroupeZoneViewModel(groupeZone: GroupeZone())
     @State private var tabSelected = 1
 
 
@@ -17,7 +18,7 @@ struct ContentView: View {
     var body: some View {
 
         TabView(selection: $tabSelected){
-            ListeZoneView()
+            ListeZoneView(listeZones: ZoneVM)
                     .tabItem {Label("Zone",systemImage : "list.dash")}.tag(0)
 
             ListeJeuxView(listeJeux: JeuVM)

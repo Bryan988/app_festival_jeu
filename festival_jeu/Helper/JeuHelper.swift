@@ -13,9 +13,10 @@ struct GameData : Codable {
     var nomPersonne:String
 }
 
-// The data of a zone
+//data for zone
 struct ZoneData : Codable {
-
+    var libelleZone:String
+    var games:[GameData]
 }
 
 // The data of an editor
@@ -60,6 +61,46 @@ struct JeuHelper{
                     return
                 }
                 endofrequest(.success(games))
+                return
+            case let .failure(error):
+                endofrequest(.failure(error))
+                return
+            }
+        }
+    }
+
+    // Translate a list of gamesData into a list of games
+    static func zoneData2zone(data: [ZoneData]) -> [Zone]?{
+        var zones = [Zone]()
+        var games = [Jeu]()
+
+        for zone in data{
+            for game in zone.games{
+                let gameData = Jeu(nomJeu: game.libelleJeu,nombreJoueur: game.nombreJoueur, ageMinimum: game.ageMinimum,
+                        duree: game.duree,prototype: game.prototype, nomPersonne: game.nomPersonne)
+                games.append(gameData)
+            }
+
+            let newZone = Zone(libelleZone: zone.libelleZone,games: games)
+            zones.append(newZone)
+        }
+        return zones
+    }
+
+
+    // We ask the server to retrieve all the games
+    static func loadAllZones(endofrequest: @escaping (Result<[Zone],HttpRequestError>) -> Void){
+        let getDataHelper = GetDataHelper()
+        getDataHelper.httpGetJsonData(from: "https://festival-jeu-montpellier.herokuapp.com/api/gestion/zone/") {
+            (result: Result<[ZoneData], HttpRequestError>) in
+            switch result{
+            case let .success(data):
+
+                guard let zones = JeuHelper.zoneData2zone(data: data) else {
+                    endofrequest(.failure(.JsonDecodingFailed))
+                    return
+                }
+                endofrequest(.success(zones))
                 return
             case let .failure(error):
                 endofrequest(.failure(error))

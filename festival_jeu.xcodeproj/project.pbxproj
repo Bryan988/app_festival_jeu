@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		217815A7B49E86D75633F350 /* GroupeZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21781B7018CD2B09B43F1BE5 /* GroupeZone.swift */; };
+		217817362D46376D5A2553FE /* ZoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21781F43F957962CEB78B08A /* ZoneViewModel.swift */; };
+		21781B2EA0525E4F15A3AFE1 /* ListeZonesIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2178199BB8228023F68193A6 /* ListeZonesIntent.swift */; };
+		21781E312C65F70BA09885E6 /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21781E6749D19131B48B5D8B /* Zone.swift */; };
+		21781F442CC55F850650B045 /* GroupeZoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2178143547ACFF5632F852FB /* GroupeZoneViewModel.swift */; };
 		2182F085FC2370170AE8A537 /* festival_jeuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182FE29E23B73578A6B4CF5 /* festival_jeuApp.swift */; };
 		2182F1E6320109EB8BE8B536 /* GetDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182F4041B32B4A8948C2B89 /* GetDataHelper.swift */; };
 		2182F39A5C7E737DDBD726DC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2182F1CFDC7BB7A55A70A93E /* Preview Assets.xcassets */; };
@@ -24,6 +29,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2178143547ACFF5632F852FB /* GroupeZoneViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupeZoneViewModel.swift; sourceTree = "<group>"; };
+		2178199BB8228023F68193A6 /* ListeZonesIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeZonesIntent.swift; sourceTree = "<group>"; };
+		21781B7018CD2B09B43F1BE5 /* GroupeZone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupeZone.swift; sourceTree = "<group>"; };
+		21781E6749D19131B48B5D8B /* Zone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
+		21781F43F957962CEB78B08A /* ZoneViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoneViewModel.swift; sourceTree = "<group>"; };
 		2182F072C79AFF83D972672E /* JeuHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JeuHelper.swift; sourceTree = "<group>"; };
 		2182F1CFDC7BB7A55A70A93E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2182F4041B32B4A8948C2B89 /* GetDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetDataHelper.swift; sourceTree = "<group>"; };
@@ -107,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				2FAB73984CFF81BE3034B3F2 /* ListeJeuxIntent.swift */,
+				2178199BB8228023F68193A6 /* ListeZonesIntent.swift */,
 			);
 			path = Intent;
 			sourceTree = "<group>";
@@ -116,6 +127,8 @@
 			children = (
 				2FAB7FBDBC10B8536145872A /* Jeu.swift */,
 				2FAB75B7FDC8A47E0D3E859B /* GroupeJeu.swift */,
+				21781E6749D19131B48B5D8B /* Zone.swift */,
+				21781B7018CD2B09B43F1BE5 /* GroupeZone.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -135,6 +148,8 @@
 			children = (
 				2FAB7E8965B4814ED2B3ADF0 /* JeuViewModel.swift */,
 				2FAB7124B4F8574F8B00659E /* GroupeJeuViewModel.swift */,
+				21781F43F957962CEB78B08A /* ZoneViewModel.swift */,
+				2178143547ACFF5632F852FB /* GroupeZoneViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -210,6 +225,11 @@
 				2182F1E6320109EB8BE8B536 /* GetDataHelper.swift in Sources */,
 				2182F7E2434B42D753AA39BD /* JeuHelper.swift in Sources */,
 				2182F781C4D2D246F1473CBF /* ListeZoneView.swift in Sources */,
+				21781E312C65F70BA09885E6 /* Zone.swift in Sources */,
+				21781B2EA0525E4F15A3AFE1 /* ListeZonesIntent.swift in Sources */,
+				217817362D46376D5A2553FE /* ZoneViewModel.swift in Sources */,
+				21781F442CC55F850650B045 /* GroupeZoneViewModel.swift in Sources */,
+				217815A7B49E86D75633F350 /* GroupeZone.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

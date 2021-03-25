@@ -19,6 +19,7 @@ class ListeJeuxIntent{
         self.listeJeux.loadingState = .loading("loading")
         // Get Data from link
         JeuHelper.loadAllGames(endofrequest:JSONLoaded)
+
         //valRetour=on prend les valeurs aec le lien
         //self.listeJeux.loadingState = .loaded(valretour)
 
@@ -36,6 +37,7 @@ class ListeJeuxIntent{
             }
 
     }
+
     func refresh(){
         self.listeJeux.loadingState = .initState
     }
