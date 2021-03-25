@@ -12,6 +12,7 @@ class ListeJeuxIntent{
         self.listeJeux = listeJeux
     }
     /*func loaded(jeux : [Jeu]){
+
         self.listeJeux.loadingState = .initState
     }*/
     func loadJeux(){
