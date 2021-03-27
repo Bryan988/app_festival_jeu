@@ -4,7 +4,9 @@
 
 import Foundation
 
-class Jeu {
+class Jeu:Identifiable {
+    let id = UUID()
+
     private(set) var libelleJeu:String
     private(set) var nombreJoueur:String
     private(set) var ageMinimum:Int

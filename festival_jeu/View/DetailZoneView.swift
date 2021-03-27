@@ -12,6 +12,35 @@ struct DetailZoneView: View{
         self.zone = zone
     }
     var body: some View{
-        Text("a")
+
+            NavigationView{
+                VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/)
+                {
+                    List {
+                        Text("Liste des jeux :")
+                        ForEach(zone.games) { game in
+
+                            NavigationLink(
+                                    //change to destination of a game
+                                    destination: DetailZoneView(zone: zone)) {
+                                HStack {
+                                    Text("\(game.libelleJeu)")
+                                    Spacer()
+                                }.foregroundColor(.blue)
+                            }
+
+                        }
+                    }
+
+
+
+
+
+                }
+
+                        .navigationTitle("Zone "+"\(zone.libelleZone)")
+
+            }
+
     }
 }
