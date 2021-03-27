@@ -11,11 +11,15 @@ struct ListeZoneView: View {
         return self.listeZones.loadingStateZone
     }
 
+
+
+
     init(listeZones l:GroupeZoneViewModel) {
         print("nice")
         self.listeZones  = l
         self.intent     = ListeZonesIntent(listeZones: l)
         let _  = self.listeZones.$loadingStateZone.sink(receiveValue: stateChanged)
+
 
     }
     func stateChanged(state:LoadingStateZone){
@@ -34,20 +38,30 @@ struct ListeZoneView: View {
         self.intent.loadZones()
     }
 
+
+
+
     var body: some View {
-        VStack{
-            List{
-                ForEach(listeZones.listeZones){ zone in
-                    HStack{
-                        Text("\(zone.libelleZone)")
-                        Spacer()
-                    }.foregroundColor(.blue)
+        NavigationView {
+            VStack {
+                List {
+                    ForEach(listeZones.listeZones) { zone in
+                        NavigationLink(
+                                destination: DetailZoneView(zone: zone)) {
+                            HStack {
+                                Text("\(zone.libelleZone)")
+                                Spacer()
+                            }.foregroundColor(.blue)
+                        }
+
+                    }
+                }.navigationBarTitle("Liste des zones")
+                ErrorViewZone(state: zoneState)
+                Button("Refresh") {
+                    intent.refresh()
                 }
             }
-            ErrorViewZone(state: zoneState)
-            Button("Refresh"){
-                intent.refresh()
-            }
+
         }
     }
 }
@@ -69,7 +83,7 @@ struct ErrorViewZone : View{
                 EmptyView()
             }
             if case let .loaded(data) = state{
-                Text("\(data.count) Zones présents!")
+                Text("\(data.count) Zones présentes!")
             }
             Spacer()
         }

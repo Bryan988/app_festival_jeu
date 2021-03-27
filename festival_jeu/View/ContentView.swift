@@ -22,7 +22,7 @@ struct ContentView: View {
                     .tabItem {Label("Zone",systemImage : "list.dash")}.tag(0)
 
             ListeJeuxView(listeJeux: JeuVM)
-            .tabItem {Label("Jeux",systemImage : "list.dash")}.tag(1)
+            .tabItem {Label("Jeux",systemImage : "livephoto.play")}.tag(1)
         }
     }
 }

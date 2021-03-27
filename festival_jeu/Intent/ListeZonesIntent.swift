@@ -32,7 +32,7 @@ class ListeZonesIntent{
         }
 
     }
-    func refresh(){
+    @objc func refresh(){
         self.listeZones.loadingStateZone = .initState
     }
 

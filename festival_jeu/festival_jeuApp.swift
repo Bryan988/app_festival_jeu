@@ -13,6 +13,7 @@ struct festival_jeuApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+
         }
     }
 }

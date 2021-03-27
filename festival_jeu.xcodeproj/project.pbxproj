@@ -10,6 +10,7 @@
 		217815A7B49E86D75633F350 /* GroupeZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21781B7018CD2B09B43F1BE5 /* GroupeZone.swift */; };
 		217817362D46376D5A2553FE /* ZoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21781F43F957962CEB78B08A /* ZoneViewModel.swift */; };
 		21781B2EA0525E4F15A3AFE1 /* ListeZonesIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2178199BB8228023F68193A6 /* ListeZonesIntent.swift */; };
+		21781C4087530F887C03BB5E /* DetailZoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217815E426008C36F3A200DE /* DetailZoneView.swift */; };
 		21781E312C65F70BA09885E6 /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21781E6749D19131B48B5D8B /* Zone.swift */; };
 		21781F442CC55F850650B045 /* GroupeZoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2178143547ACFF5632F852FB /* GroupeZoneViewModel.swift */; };
 		2182F085FC2370170AE8A537 /* festival_jeuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182FE29E23B73578A6B4CF5 /* festival_jeuApp.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		2178143547ACFF5632F852FB /* GroupeZoneViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupeZoneViewModel.swift; sourceTree = "<group>"; };
+		217815E426008C36F3A200DE /* DetailZoneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailZoneView.swift; sourceTree = "<group>"; };
 		2178199BB8228023F68193A6 /* ListeZonesIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeZonesIntent.swift; sourceTree = "<group>"; };
 		21781B7018CD2B09B43F1BE5 /* GroupeZone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupeZone.swift; sourceTree = "<group>"; };
 		21781E6749D19131B48B5D8B /* Zone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				2FAB70DE48DC6B0D614DA2DB /* ContentView.swift */,
 				2FAB7570FD50A5D5F657B227 /* ListeJeuxView.swift */,
 				2182FAF135F6E7EF56AEC1FF /* ListeZoneView.swift */,
+				217815E426008C36F3A200DE /* DetailZoneView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				217817362D46376D5A2553FE /* ZoneViewModel.swift in Sources */,
 				21781F442CC55F850650B045 /* GroupeZoneViewModel.swift in Sources */,
 				217815A7B49E86D75633F350 /* GroupeZone.swift in Sources */,
+				21781C4087530F887C03BB5E /* DetailZoneView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
