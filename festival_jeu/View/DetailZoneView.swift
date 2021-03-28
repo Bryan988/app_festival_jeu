@@ -7,40 +7,30 @@ import SwiftUI
 
 struct DetailZoneView: View{
     var zone : ZoneViewModel
-    init(zone : ZoneViewModel)
-    {
+
+    init(zone : ZoneViewModel){
         self.zone = zone
     }
-    var body: some View{
 
+    var body: some View{
             NavigationView{
                 VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/)
                 {
                     List {
                         Text("Liste des jeux :")
                         ForEach(zone.games) { game in
-
                             NavigationLink(
                                     //change to destination of a game
-                                    destination: DetailZoneView(zone: zone)) {
+                                    destination: DetailJeuView(jeu: JeuViewModel(jeu: game))) {
                                 HStack {
                                     Text("\(game.libelleJeu)")
                                     Spacer()
                                 }.foregroundColor(.blue)
                             }
-
                         }
                     }
-
-
-
-
-
                 }
-
-                        .navigationTitle("Zone "+"\(zone.libelleZone)")
-
+                navigationTitle("Zone "+"\(zone.libelleZone)")
             }
-
     }
 }

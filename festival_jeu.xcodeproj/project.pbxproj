@@ -23,6 +23,7 @@
 		2182F800A1B8A8F06CDAE071 /* ListeEditeursIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182F1D73EE4EEC685B10113 /* ListeEditeursIntent.swift */; };
 		2182F9E2C8C8BEC9A653D1A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2182FEE9C4760A3DBED10685 /* Assets.xcassets */; };
 		2182FA6F71F50E80F6CDEBB5 /* ListEditeurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182F51A0F5D72F7A797D34C /* ListEditeurView.swift */; };
+		2182FB2C6A85AB65F8DB00F8 /* DetailJeuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182F0DB2E8DDCC79FD9233F /* DetailJeuView.swift */; };
 		2182FC017D16AED8919F50AB /* GroupeEditeurViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182F043456F19840CD2E659 /* GroupeEditeurViewModel.swift */; };
 		2182FF18B6EDE0E8125DC5B6 /* GroupeEditeur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182FAE03B013DAF7A653CDD /* GroupeEditeur.swift */; };
 		2182FFAEC20B82332BE84B57 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2182FF2952D4A542ED07E6D2 /* .gitignore */; };
@@ -45,6 +46,7 @@
 		21781F43F957962CEB78B08A /* ZoneViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoneViewModel.swift; sourceTree = "<group>"; };
 		2182F043456F19840CD2E659 /* GroupeEditeurViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupeEditeurViewModel.swift; sourceTree = "<group>"; };
 		2182F072C79AFF83D972672E /* JeuHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JeuHelper.swift; sourceTree = "<group>"; };
+		2182F0DB2E8DDCC79FD9233F /* DetailJeuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailJeuView.swift; sourceTree = "<group>"; };
 		2182F1CFDC7BB7A55A70A93E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2182F1D73EE4EEC685B10113 /* ListeEditeursIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeEditeursIntent.swift; sourceTree = "<group>"; };
 		2182F4041B32B4A8948C2B89 /* GetDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetDataHelper.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				217815E426008C36F3A200DE /* DetailZoneView.swift */,
 				2182F51A0F5D72F7A797D34C /* ListEditeurView.swift */,
 				2182FAF5992CAC36EE51C15F /* DetailEditeurView.swift */,
+				2182F0DB2E8DDCC79FD9233F /* DetailJeuView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				2182FF18B6EDE0E8125DC5B6 /* GroupeEditeur.swift in Sources */,
 				2182FA6F71F50E80F6CDEBB5 /* ListEditeurView.swift in Sources */,
 				2182FFDDBE76382F4CAB8E36 /* DetailEditeurView.swift in Sources */,
+				2182FB2C6A85AB65F8DB00F8 /* DetailJeuView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

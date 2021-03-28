@@ -21,7 +21,7 @@ struct DetailEditeurView: View{
                     ForEach(editeur.games) { game in
                         NavigationLink(
                                 //change to destination of a game
-                                destination: DetailEditeurView(editeur: editeur)) {
+                                destination: DetailJeuView(jeu: JeuViewModel(jeu: game))) {
                             HStack {
                                 Text("\(game.libelleJeu)")
                                 Spacer()

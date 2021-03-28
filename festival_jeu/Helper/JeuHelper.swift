@@ -53,7 +53,7 @@ struct JeuHelper{
     // We ask the server to retrieve all the games
     static func loadAllGames(endofrequest: @escaping (Result<[Jeu],HttpRequestError>) -> Void){
         let getDataHelper = GetDataHelper()
-        getDataHelper.httpGetJsonData(from: "https://festival-jeu-montpellier.herokuapp.com/api/games/") {
+        getDataHelper.httpGetJsonData(from: "https://festival-jeu-montpellier.herokuapp.com/api/games/FestivalCourant") {
             (result: Result<[GameData], HttpRequestError>) in
             switch result{
             case let .success(data):
@@ -73,17 +73,20 @@ struct JeuHelper{
     // Translate a list of ZoneData into a list of Zones
     static func zoneData2zone(data: [ZoneData]) -> [Zone]?{
         var zones = [Zone]()
-        var games = [Jeu]()
 
         for zone in data{
-            for game in zone.games{
-                let gameData = Jeu(nomJeu: game.libelleJeu,nombreJoueur: game.nombreJoueur, ageMinimum: game.ageMinimum,
-                        duree: game.duree,prototype: game.prototype, nomPersonne: game.nomPersonne)
-                games.append(gameData)
-            }
+            var games = [Jeu]()
 
-            let newZone = Zone(libelleZone: zone.libelleZone,games: games)
-            zones.append(newZone)
+            if(zone.libelleZone != "Indéfinie"){
+                for game in zone.games{
+                    let gameData = Jeu(nomJeu: game.libelleJeu,nombreJoueur: game.nombreJoueur, ageMinimum: game.ageMinimum,
+                            duree: game.duree,prototype: game.prototype, nomPersonne: game.nomPersonne)
+                    games.append(gameData)
+                }
+
+                let newZone = Zone(libelleZone: zone.libelleZone,games: games)
+                zones.append(newZone)
+            }
         }
         return zones
     }
@@ -112,14 +115,13 @@ struct JeuHelper{
     // Translate a list of EditeurData into a list of Editeur
     static func editeurData2editeur(data: [EditeurData]) -> [Editeur]?{
         var editeurs = [Editeur]()
-        var games = [Jeu]()
 
         for editeur in data{
+            var games = [Jeu]()
             for game in editeur.games{
                 let gameData = Jeu(nomJeu: game.libelleJeu,nombreJoueur: game.nombreJoueur, ageMinimum: game.ageMinimum,
                         duree: game.duree,prototype: game.prototype, nomPersonne: editeur.nomPersonne)
                 games.append(gameData)
-                print(gameData)
             }
             let newEditeur = Editeur(nomPersonne: editeur.nomPersonne,games: games)
             editeurs.append(newEditeur)
@@ -134,7 +136,7 @@ struct JeuHelper{
             (result: Result<[EditeurData], HttpRequestError>) in
             switch result{
             case let .success(data):
-
+                print(data)
                 guard let editeurs = JeuHelper.editeurData2editeur(data: data) else {
                     endofrequest(.failure(.JsonDecodingFailed))
                     return

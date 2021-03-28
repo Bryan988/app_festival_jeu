@@ -11,17 +11,13 @@ struct ListeZoneView: View {
         return self.listeZones.loadingStateZone
     }
 
-
-
-
     init(listeZones l:GroupeZoneViewModel) {
         print("nice")
         self.listeZones  = l
         self.intent     = ListeZonesIntent(listeZones: l)
         let _  = self.listeZones.$loadingStateZone.sink(receiveValue: stateChanged)
-
-
     }
+
     func stateChanged(state:LoadingStateZone){
         switch state {
         case .initState : self.intent.loadZones()
@@ -29,17 +25,14 @@ struct ListeZoneView: View {
         }
     }
 
-
     init(listeZones : GroupeZoneViewModel,intent:ListeZonesIntent){
         self.listeZones = listeZones
         self.intent=intent
     }
+
     func loadData(){
         self.intent.loadZones()
     }
-
-
-
 
     var body: some View {
         NavigationView {
@@ -49,7 +42,7 @@ struct ListeZoneView: View {
                         NavigationLink(
                                 destination: DetailZoneView(zone: zone)) {
                             HStack {
-                                Text("\(zone.libelleZone)")
+                                Text("\(zone.libelleZone) - \(zone.games.count) Jeu"+(zone.games.count > 1 ? "x" : ""))
                                 Spacer()
                             }.foregroundColor(.blue)
                         }

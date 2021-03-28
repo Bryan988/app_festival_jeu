@@ -35,23 +35,29 @@ struct ListeJeuxView: View {
     }
 
     var body: some View {
-        VStack{
-            List{
-                ForEach(listeJeux.listeJeux){ game in
-                    HStack{
-                        Text("\(game.libelleJeu)")
-                        Spacer()
-                    }.foregroundColor(.blue)
+        NavigationView {
+            VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/) {
+                List {
+                    Text("Liste de tous les jeux")
+                    ForEach(listeJeux.listeJeux) { game in
+                        NavigationLink(
+                                //change to destination of a game
+                                destination: DetailJeuView(jeu: game)) {
+                            HStack {
+                                Text("\(game.libelleJeu)")
+                                Spacer()
+                            }.foregroundColor(.blue)
+                        }
+                    }
                 }
-            }
-            ErrorView(state: jeuState)
-            Button("Refresh"){
-                intent.refresh()
+                ErrorView(state: jeuState)
+                Button("Refresh") {
+                    intent.refresh()
+                }
             }
         }
     }
 }
-
 
 struct ErrorView : View{
     let state : LoadingState

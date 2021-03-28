@@ -42,7 +42,7 @@ struct ListeEditeurView: View {
                         NavigationLink(
                                 destination: DetailEditeurView(editeur: editeur)) {
                             HStack {
-                                Text("\(editeur.nomPersonne)")
+                                Text("\(editeur.nomPersonne) - \(editeur.games.count) Jeu"+(editeur.games.count > 1 ? "x" : ""))
                                 Spacer()
                             }.foregroundColor(.blue)
                         }
