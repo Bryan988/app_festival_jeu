@@ -20,8 +20,9 @@ struct ZoneData : Codable {
 }
 
 // The data of an editor
-struct Editeur : Codable {
-
+struct EditeurData : Codable {
+    var nomPersonne:String
+    var games:[GameData]
 }
 
 
@@ -69,7 +70,7 @@ struct JeuHelper{
         }
     }
 
-    // Translate a list of gamesData into a list of games
+    // Translate a list of ZoneData into a list of Zones
     static func zoneData2zone(data: [ZoneData]) -> [Zone]?{
         var zones = [Zone]()
         var games = [Jeu]()
@@ -87,8 +88,7 @@ struct JeuHelper{
         return zones
     }
 
-
-    // We ask the server to retrieve all the games
+    // We ask the server to retrieve all the zones
     static func loadAllZones(endofrequest: @escaping (Result<[Zone],HttpRequestError>) -> Void){
         let getDataHelper = GetDataHelper()
         getDataHelper.httpGetJsonData(from: "https://festival-jeu-montpellier.herokuapp.com/api/gestion/zone/") {
@@ -101,6 +101,45 @@ struct JeuHelper{
                     return
                 }
                 endofrequest(.success(zones))
+                return
+            case let .failure(error):
+                endofrequest(.failure(error))
+                return
+            }
+        }
+    }
+
+    // Translate a list of EditeurData into a list of Editeur
+    static func editeurData2editeur(data: [EditeurData]) -> [Editeur]?{
+        var editeurs = [Editeur]()
+        var games = [Jeu]()
+
+        for editeur in data{
+            for game in editeur.games{
+                let gameData = Jeu(nomJeu: game.libelleJeu,nombreJoueur: game.nombreJoueur, ageMinimum: game.ageMinimum,
+                        duree: game.duree,prototype: game.prototype, nomPersonne: editeur.nomPersonne)
+                games.append(gameData)
+                print(gameData)
+            }
+            let newEditeur = Editeur(nomPersonne: editeur.nomPersonne,games: games)
+            editeurs.append(newEditeur)
+        }
+        return editeurs
+    }
+
+    // We ask the server to retrieve all the zones
+    static func loadAllEditors(endofrequest: @escaping (Result<[Editeur],HttpRequestError>) -> Void){
+        let getDataHelper = GetDataHelper()
+        getDataHelper.httpGetJsonData(from: "https://festival-jeu-montpellier.herokuapp.com/api/gestion/jeuPresent/editeur") {
+            (result: Result<[EditeurData], HttpRequestError>) in
+            switch result{
+            case let .success(data):
+
+                guard let editeurs = JeuHelper.editeurData2editeur(data: data) else {
+                    endofrequest(.failure(.JsonDecodingFailed))
+                    return
+                }
+                endofrequest(.success(editeurs))
                 return
             case let .failure(error):
                 endofrequest(.failure(error))

@@ -11,18 +11,18 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var JeuVM : GroupeJeuViewModel = GroupeJeuViewModel(groupeJeu: GroupeJeu())
     @StateObject var ZoneVM : GroupeZoneViewModel = GroupeZoneViewModel(groupeZone: GroupeZone())
+    @StateObject var EditeurVM : GroupeEditeurViewModel = GroupeEditeurViewModel(groupeEditeur: GroupeEditeur())
     @State private var tabSelected = 1
-
-
 
     var body: some View {
 
         TabView(selection: $tabSelected){
             ListeZoneView(listeZones: ZoneVM)
                     .tabItem {Label("Zone",systemImage : "list.dash")}.tag(0)
-
             ListeJeuxView(listeJeux: JeuVM)
             .tabItem {Label("Jeux",systemImage : "livephoto.play")}.tag(1)
+            ListeEditeurView(listeEditeurs : EditeurVM)
+            .tabItem {Label("Editeurs", systemImage : "person")}.tag(2)
         }
     }
 }

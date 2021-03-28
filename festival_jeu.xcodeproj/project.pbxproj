@@ -15,11 +15,18 @@
 		21781F442CC55F850650B045 /* GroupeZoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2178143547ACFF5632F852FB /* GroupeZoneViewModel.swift */; };
 		2182F085FC2370170AE8A537 /* festival_jeuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182FE29E23B73578A6B4CF5 /* festival_jeuApp.swift */; };
 		2182F1E6320109EB8BE8B536 /* GetDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182F4041B32B4A8948C2B89 /* GetDataHelper.swift */; };
+		2182F37AF8EE6B245AC7B11A /* Editeur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182FAF8BCF88B05ADDF25F8 /* Editeur.swift */; };
 		2182F39A5C7E737DDBD726DC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2182F1CFDC7BB7A55A70A93E /* Preview Assets.xcassets */; };
+		2182F61C0D838D6D035AF198 /* EditeurViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182F47A3AD49186447BB129 /* EditeurViewModel.swift */; };
 		2182F781C4D2D246F1473CBF /* ListeZoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182FAF135F6E7EF56AEC1FF /* ListeZoneView.swift */; };
 		2182F7E2434B42D753AA39BD /* JeuHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182F072C79AFF83D972672E /* JeuHelper.swift */; };
+		2182F800A1B8A8F06CDAE071 /* ListeEditeursIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182F1D73EE4EEC685B10113 /* ListeEditeursIntent.swift */; };
 		2182F9E2C8C8BEC9A653D1A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2182FEE9C4760A3DBED10685 /* Assets.xcassets */; };
+		2182FA6F71F50E80F6CDEBB5 /* ListEditeurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182F51A0F5D72F7A797D34C /* ListEditeurView.swift */; };
+		2182FC017D16AED8919F50AB /* GroupeEditeurViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182F043456F19840CD2E659 /* GroupeEditeurViewModel.swift */; };
+		2182FF18B6EDE0E8125DC5B6 /* GroupeEditeur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182FAE03B013DAF7A653CDD /* GroupeEditeur.swift */; };
 		2182FFAEC20B82332BE84B57 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2182FF2952D4A542ED07E6D2 /* .gitignore */; };
+		2182FFDDBE76382F4CAB8E36 /* DetailEditeurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182FAF5992CAC36EE51C15F /* DetailEditeurView.swift */; };
 		2FAB7180E109FA2CB74BBFBF /* JeuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAB7E8965B4814ED2B3ADF0 /* JeuViewModel.swift */; };
 		2FAB76510BD09018DC0F7B75 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAB70DE48DC6B0D614DA2DB /* ContentView.swift */; };
 		2FAB7923C04D051988AF1450 /* GroupeJeuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAB7124B4F8574F8B00659E /* GroupeJeuViewModel.swift */; };
@@ -36,11 +43,18 @@
 		21781B7018CD2B09B43F1BE5 /* GroupeZone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupeZone.swift; sourceTree = "<group>"; };
 		21781E6749D19131B48B5D8B /* Zone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
 		21781F43F957962CEB78B08A /* ZoneViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoneViewModel.swift; sourceTree = "<group>"; };
+		2182F043456F19840CD2E659 /* GroupeEditeurViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupeEditeurViewModel.swift; sourceTree = "<group>"; };
 		2182F072C79AFF83D972672E /* JeuHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JeuHelper.swift; sourceTree = "<group>"; };
 		2182F1CFDC7BB7A55A70A93E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2182F1D73EE4EEC685B10113 /* ListeEditeursIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeEditeursIntent.swift; sourceTree = "<group>"; };
 		2182F4041B32B4A8948C2B89 /* GetDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetDataHelper.swift; sourceTree = "<group>"; };
+		2182F47A3AD49186447BB129 /* EditeurViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditeurViewModel.swift; sourceTree = "<group>"; };
+		2182F51A0F5D72F7A797D34C /* ListEditeurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListEditeurView.swift; sourceTree = "<group>"; };
 		2182F6B2DAD362653E3EADA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		2182FAE03B013DAF7A653CDD /* GroupeEditeur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupeEditeur.swift; sourceTree = "<group>"; };
 		2182FAF135F6E7EF56AEC1FF /* ListeZoneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListeZoneView.swift; sourceTree = "<group>"; };
+		2182FAF5992CAC36EE51C15F /* DetailEditeurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailEditeurView.swift; sourceTree = "<group>"; };
+		2182FAF8BCF88B05ADDF25F8 /* Editeur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Editeur.swift; sourceTree = "<group>"; };
 		2182FE29E23B73578A6B4CF5 /* festival_jeuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = festival_jeuApp.swift; sourceTree = "<group>"; };
 		2182FEDA92FA1BDC9FE4B8F0 /* festival_jeu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = festival_jeu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2182FEE9C4760A3DBED10685 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -120,6 +134,7 @@
 			children = (
 				2FAB73984CFF81BE3034B3F2 /* ListeJeuxIntent.swift */,
 				2178199BB8228023F68193A6 /* ListeZonesIntent.swift */,
+				2182F1D73EE4EEC685B10113 /* ListeEditeursIntent.swift */,
 			);
 			path = Intent;
 			sourceTree = "<group>";
@@ -131,6 +146,8 @@
 				2FAB75B7FDC8A47E0D3E859B /* GroupeJeu.swift */,
 				21781E6749D19131B48B5D8B /* Zone.swift */,
 				21781B7018CD2B09B43F1BE5 /* GroupeZone.swift */,
+				2182FAF8BCF88B05ADDF25F8 /* Editeur.swift */,
+				2182FAE03B013DAF7A653CDD /* GroupeEditeur.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -142,6 +159,8 @@
 				2FAB7570FD50A5D5F657B227 /* ListeJeuxView.swift */,
 				2182FAF135F6E7EF56AEC1FF /* ListeZoneView.swift */,
 				217815E426008C36F3A200DE /* DetailZoneView.swift */,
+				2182F51A0F5D72F7A797D34C /* ListEditeurView.swift */,
+				2182FAF5992CAC36EE51C15F /* DetailEditeurView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -153,6 +172,8 @@
 				2FAB7124B4F8574F8B00659E /* GroupeJeuViewModel.swift */,
 				21781F43F957962CEB78B08A /* ZoneViewModel.swift */,
 				2178143547ACFF5632F852FB /* GroupeZoneViewModel.swift */,
+				2182F47A3AD49186447BB129 /* EditeurViewModel.swift */,
+				2182F043456F19840CD2E659 /* GroupeEditeurViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -234,6 +255,13 @@
 				21781F442CC55F850650B045 /* GroupeZoneViewModel.swift in Sources */,
 				217815A7B49E86D75633F350 /* GroupeZone.swift in Sources */,
 				21781C4087530F887C03BB5E /* DetailZoneView.swift in Sources */,
+				2182F37AF8EE6B245AC7B11A /* Editeur.swift in Sources */,
+				2182F61C0D838D6D035AF198 /* EditeurViewModel.swift in Sources */,
+				2182F800A1B8A8F06CDAE071 /* ListeEditeursIntent.swift in Sources */,
+				2182FC017D16AED8919F50AB /* GroupeEditeurViewModel.swift in Sources */,
+				2182FF18B6EDE0E8125DC5B6 /* GroupeEditeur.swift in Sources */,
+				2182FA6F71F50E80F6CDEBB5 /* ListEditeurView.swift in Sources */,
+				2182FFDDBE76382F4CAB8E36 /* DetailEditeurView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
