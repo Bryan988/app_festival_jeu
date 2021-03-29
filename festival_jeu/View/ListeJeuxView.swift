@@ -25,7 +25,6 @@ struct ListeJeuxView: View {
         }
     }
 
-
     init(listeJeux : GroupeJeuViewModel,intent:ListeJeuxIntent){
         self.listeJeux = listeJeux
         self.intent=intent
@@ -42,10 +41,9 @@ struct ListeJeuxView: View {
             VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/) {
                 HStack{
                     Spacer()
-                    TextField("search for ...", text: $text)
-                    Button("Search for tracks"){filterData(nomJeu: text)}
+                    TextField("Rechercher ...", text: $text)
+                    Button("Filtrer"){filterData(nomJeu: text)}
                     Spacer()
-
                 }
                 List(listeJeux.listeJeux) { game in
                         NavigationLink(

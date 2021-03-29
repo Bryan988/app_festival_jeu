@@ -9,7 +9,9 @@ enum LoadingStateZone{
     case loading(String)
     case loaded([Zone])
     case loadingError(Error)
+    case loadingFilter(String)
 }
+
 class GroupeZoneViewModel:Identifiable,ObservableObject{
     let id=UUID()
     private(set) var groupeZone : GroupeZone
@@ -25,7 +27,13 @@ class GroupeZoneViewModel:Identifiable,ObservableObject{
                     self.listeZones.append(ZoneViewModel(zone: g))
                 }
                 print(self.listeZones)
-
+            case let.loadingFilter(libelleZone):
+                reInitZones()
+                if(libelleZone != ""){
+                    let shortNames = self.listeZones.filter { $0.libelleZone.contains(libelleZone) }
+                    print(shortNames)
+                    self.listeZones=shortNames
+                }
             case .loadingError:
                 print("error")
             case .initState :
@@ -42,6 +50,13 @@ class GroupeZoneViewModel:Identifiable,ObservableObject{
         self.listeZones=[]
         for g in groupeZone.zones{
             self.listeZones.append(ZoneViewModel(zone: g))
+        }
+    }
+
+    func reInitZones(){
+        self.listeZones=[]
+        for z in groupeZone.zones{
+            self.listeZones.append(ZoneViewModel(zone: z))
         }
     }
 
