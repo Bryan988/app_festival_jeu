@@ -38,33 +38,41 @@ struct ListeJeuxView: View {
     }
     @State var text : String = ""
     var body: some View {
-        NavigationView {
-            VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/) {
-                HStack{
-                    Spacer()
-                    TextField("search for ...", text: $text)
-                    Button("Search for tracks"){filterData(nomJeu: text)}
-                    Spacer()
+            NavigationView {
 
-                }
-                List(listeJeux.listeJeux) { game in
-                        NavigationLink(
-                                //change to destination of a game
-                                destination: DetailJeuView(jeu: game)) {
-                            HStack {
-                                Text("\(game.libelleJeu)")
-                                Spacer()
-                            }.foregroundColor(.blue)
+                    VStack{
+                        HStack{
+                            Spacer()
+                            TextField("search for ...", text: $text)
+                            Button(action: {filterData(nomJeu: text)}){
+                                Image(systemName: "magnifyingglass")
+                            }
+                            Spacer()
+
                         }
-                }.navigationBarTitle("Liste des jeux")
-                Spacer()
-                ErrorView(state: jeuState)
-                Button("Refresh") {
-                    intent.refresh()
-                }
-                Spacer()
+                        List(listeJeux.listeJeux) { game in
+
+                            NavigationLink(
+                                    //change to destination of a game
+                                    destination: DetailJeuView(jeu: game)) {
+                                HStack {
+                                    Text("\(game.libelleJeu)").font(.system(size: 19, weight:.medium, design:.default))
+                                    Spacer()
+                                }.foregroundColor(.black)
+                            }
+                        }.navigationBarTitle("Liste des jeux")
+                        Spacer()
+                        ErrorView(state: jeuState)
+                        Button("Refresh") {
+                            intent.refresh()
+                        }
+                        Spacer()
+                    }
+
+
             }
-        }
+
+
     }
 }
 
@@ -94,5 +102,10 @@ struct ErrorMessage : View{
         VStack{
             Text("Error in search request")
         }
+    }
+}
+struct ListeJeuxView_Previews: PreviewProvider {
+    static var previews: some View {
+        ListeJeuxView(listeJeux: GroupeJeuViewModel(groupeJeu: GroupeJeu(jeux: [Jeu(nomJeu: "TEST", nombreJoueur: "4", ageMinimum: 2, duree:"30m", prototype: true, nomPersonne: "José")])))
     }
 }

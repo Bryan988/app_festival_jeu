@@ -15,23 +15,24 @@ struct DetailJeuView: View{
     }
 
     var body: some View{
-            VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/) {
+            VStack{
                 Text("\(jeu.libelleJeu)").font(.title)
                 Spacer()
                 Text("Editeur du jeu : \(jeu.nomPersonne)")
                 HStack{
-                    Image(systemName: "person.3.fill")
+                    Image(systemName: "person.3.fill").resizable().frame(width: 36,height: 36)
                     Text("\(jeu.nombreJoueur) joueurs - ")
                     Text("\(jeu.ageMinimum) ans")
 
                 }
                 HStack{
-                    Image(systemName: "clock")
+                    Image(systemName: "clock").resizable().frame(width: 36,height: 36)
                     Text("\(jeu.duree) - ")
                     Text("Prototype : \(prototype)")
                 }
-
                 Spacer()
+
             }
+
     }
 }
