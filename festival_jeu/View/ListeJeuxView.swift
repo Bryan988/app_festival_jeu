@@ -44,7 +44,9 @@ struct ListeJeuxView: View {
                 HStack{
                     Spacer()
                     TextField("Rechercher ...", text: $text)
-                    Button("Filtrer"){filterData(nomJeu: text)}
+                    Button(action: {filterData(nomJeu: text)}){
+                        Image(systemName: "magnifyingglass")
+                    }
                     Spacer()
                 }
                 List(listeJeux.listeJeux) { game in
@@ -54,7 +56,7 @@ struct ListeJeuxView: View {
                             HStack {
                                 Text("\(game.libelleJeu)")
                                 Spacer()
-                            }.foregroundColor(.blue)
+                            }.foregroundColor(.black)
                         }
                 }.navigationBarTitle("Liste des jeux")
                 .pullToRefresh(isShowing: $isShowing) {

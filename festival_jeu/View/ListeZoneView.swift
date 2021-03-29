@@ -47,8 +47,8 @@ struct ListeZoneView: View {
                 HStack {
                     Spacer()
                     TextField("Rechercher ...", text: $text).padding(.top, 10)
-                    Button("Filtrer") {
-                        filterData(nomZone: text)
+                    Button(action: {filterData(nomZone: text)}){
+                        Image(systemName: "magnifyingglass")
                     }
                     Spacer()
                 }
