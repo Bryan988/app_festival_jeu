@@ -16,21 +16,44 @@ struct DetailJeuView: View{
 
     var body: some View{
             VStack{
+                Image("logo180")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width : 150,height:150)
+                    .clipped()
+                    .cornerRadius(150)
+                    .shadow(radius:3)
                 Text("\(jeu.libelleJeu)").font(.title)
-                Spacer()
-                Text("Editeur du jeu : \(jeu.nomPersonne)")
-                HStack{
-                    Image(systemName: "person.3.fill").resizable().frame(width: 36,height: 36)
-                    Text("\(jeu.nombreJoueur) joueurs - ")
-                    Text("\(jeu.ageMinimum) ans")
-
+                Form{
+                    HStack{
+                        Image(systemName: "person.fill").resizable().frame(width: 24,height: 24)
+                        Text("Editeur")
+                        Spacer()
+                        Text("\(jeu.nomPersonne)").foregroundColor(.gray).font(.callout)
+                    }
+                    HStack{
+                        Image(systemName: "person.3.fill").resizable().frame(width: 18,height: 20)
+                        Text("Nombre de joueurs")
+                        Spacer()
+                        Text("\(jeu.nombreJoueur)").foregroundColor(.gray).font(.callout)
+                    }
+                    HStack{
+                        Text("Age minimum")
+                        Spacer()
+                        Text("\(jeu.ageMinimum) ans").foregroundColor(.gray).font(.callout)
+                    }
+                    HStack{
+                        Image(systemName: "clock").resizable().frame(width: 24,height: 24)
+                        Text("Durée")
+                        Spacer()
+                        Text("\(jeu.duree)").foregroundColor(.gray).font(.callout)
+                    }
+                    HStack{
+                        Text("Prototype")
+                        Spacer()
+                        Text(" \(prototype)").foregroundColor(.gray).font(.callout)
+                    }
                 }
-                HStack{
-                    Image(systemName: "clock").resizable().frame(width: 36,height: 36)
-                    Text("\(jeu.duree) - ")
-                    Text("Prototype : \(prototype)")
-                }
-                Spacer()
 
             }
 
