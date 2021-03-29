@@ -37,6 +37,10 @@ class ListeJeuxIntent{
             }
 
     }
+    func filterJeux(nomJeu:String){
+        self.listeJeux.loadingState = .loadingFilter(nomJeu)
+    }
+
 
     func refresh(){
         self.listeJeux.loadingState = .initState

@@ -20,7 +20,7 @@ struct ContentView: View {
             ListeZoneView(listeZones: ZoneVM)
                     .tabItem {Label("Zone",systemImage : "list.dash")}.tag(0)
             ListeJeuxView(listeJeux: JeuVM)
-            .tabItem {Label("Jeux",systemImage : "livephoto.play")}.tag(1)
+            .tabItem {Label("Jeux",systemImage : "gamecontroller")}.tag(1)
             ListeEditeurView(listeEditeurs : EditeurVM)
             .tabItem {Label("Editeurs", systemImage : "person")}.tag(2)
         }

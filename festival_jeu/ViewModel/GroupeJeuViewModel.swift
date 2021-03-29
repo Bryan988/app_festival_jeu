@@ -9,6 +9,7 @@ enum LoadingState{
     case loading(String)
     case loaded([Jeu])
     case loadingError(Error)
+    case loadingFilter(String)
 }
 class GroupeJeuViewModel:Identifiable,ObservableObject{
     let id=UUID()
@@ -28,6 +29,15 @@ class GroupeJeuViewModel:Identifiable,ObservableObject{
 
             case .loadingError:
                 print("error")
+            case let.loadingFilter(nomJeu):
+                reInitJeux()
+                if(nomJeu != ""){
+                    let shortNames = self.listeJeux.filter { $0.libelleJeu.contains(nomJeu) }
+                    print(shortNames)
+                    self.listeJeux=shortNames
+                }
+
+
             case .initState :
                 self.listeJeux.removeAll()
 
@@ -39,6 +49,12 @@ class GroupeJeuViewModel:Identifiable,ObservableObject{
 
     init(groupeJeu:GroupeJeu) {
         self.groupeJeu=groupeJeu
+        self.listeJeux=[]
+        for g in groupeJeu.jeux{
+            self.listeJeux.append(JeuViewModel(jeu: g))
+        }
+    }
+    func reInitJeux(){
         self.listeJeux=[]
         for g in groupeJeu.jeux{
             self.listeJeux.append(JeuViewModel(jeu: g))

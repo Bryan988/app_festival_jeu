@@ -49,10 +49,14 @@ struct ListeZoneView: View {
 
                     }
                 }.navigationBarTitle("Liste des zones")
+                Spacer()
+
                 ErrorViewZone(state: zoneState)
                 Button("Refresh") {
                     intent.refresh()
                 }
+                Spacer()
+
             }
 
         }
@@ -64,7 +68,6 @@ struct ErrorViewZone : View{
     let state : LoadingStateZone
     var body: some View{
         VStack{
-            Spacer()
             switch state{
             case .loading:
                 ProgressView()
@@ -78,7 +81,6 @@ struct ErrorViewZone : View{
             if case let .loaded(data) = state{
                 Text("\(data.count) Zones présentes!")
             }
-            Spacer()
         }
     }
 }

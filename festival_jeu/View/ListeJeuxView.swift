@@ -33,13 +33,21 @@ struct ListeJeuxView: View {
     func loadData(){
         self.intent.loadJeux()
     }
-
+    func filterData(nomJeu:String){
+        self.intent.filterJeux(nomJeu:nomJeu)
+    }
+    @State var text : String = ""
     var body: some View {
         NavigationView {
             VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/) {
-                List {
-                    Text("Liste de tous les jeux")
-                    ForEach(listeJeux.listeJeux) { game in
+                HStack{
+                    Spacer()
+                    TextField("search for ...", text: $text)
+                    Button("Search for tracks"){filterData(nomJeu: text)}
+                    Spacer()
+
+                }
+                List(listeJeux.listeJeux) { game in
                         NavigationLink(
                                 //change to destination of a game
                                 destination: DetailJeuView(jeu: game)) {
@@ -48,12 +56,13 @@ struct ListeJeuxView: View {
                                 Spacer()
                             }.foregroundColor(.blue)
                         }
-                    }
-                }
+                }.navigationBarTitle("Liste des jeux")
+                Spacer()
                 ErrorView(state: jeuState)
                 Button("Refresh") {
                     intent.refresh()
                 }
+                Spacer()
             }
         }
     }
@@ -63,7 +72,6 @@ struct ErrorView : View{
     let state : LoadingState
     var body: some View{
         VStack{
-            Spacer()
             switch state{
             case .loading:
                 ProgressView()
@@ -77,7 +85,6 @@ struct ErrorView : View{
             if case let .loaded(data) = state{
                 Text("\(data.count) Jeux présents!")
             }
-            Spacer()
         }
     }
 }

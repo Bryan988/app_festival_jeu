@@ -49,10 +49,12 @@ struct ListeEditeurView: View {
 
                     }
                 }.navigationBarTitle("Liste des éditeurs")
+                Spacer()
                 ErrorViewEditeur(state: editeurState)
                 Button("Refresh") {
                     intent.refresh()
                 }
+                Spacer()
             }
 
         }
@@ -63,7 +65,6 @@ struct ErrorViewEditeur : View{
     let state : LoadingStateEditeur
     var body: some View{
         VStack{
-            Spacer()
             switch state{
             case .loading:
                 ProgressView()
@@ -77,7 +78,6 @@ struct ErrorViewEditeur : View{
             if case let .loaded(data) = state{
                 Text("\(data.count) éditeurs présentes!")
             }
-            Spacer()
         }
     }
 }
