@@ -3,9 +3,11 @@
 //
 
 import SwiftUI
+import SwiftUIRefresh
 
 struct ListeZoneView: View {
     @ObservedObject var listeZones: GroupeZoneViewModel
+    @State private var isShowing = false
     var intent: ListeZonesIntent
     @State var text: String = ""
     private var zoneState: LoadingStateZone {
@@ -67,10 +69,12 @@ struct ListeZoneView: View {
                         }
                     }
                 }
-                Spacer()
-                Button("Refresh") {
-                    intent.refresh()
-                }
+                        .pullToRefresh(isShowing: $isShowing) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                intent.refresh()
+                                self.isShowing = false
+                            }
+                        }
                 Spacer()
             }
                     .navigationBarTitleDisplayMode(.inline)

@@ -3,8 +3,10 @@
 //
 
 import SwiftUI
+import SwiftUIRefresh
 
 struct ListeJeuxView: View {
+    @State private var isShowing = false
     @ObservedObject var listeJeux : GroupeJeuViewModel
     var intent : ListeJeuxIntent
     private var jeuState : LoadingState{
@@ -55,11 +57,14 @@ struct ListeJeuxView: View {
                             }.foregroundColor(.blue)
                         }
                 }.navigationBarTitle("Liste des jeux")
+                .pullToRefresh(isShowing: $isShowing) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        intent.refresh()
+                        self.isShowing = false
+                    }
+                }
                 Spacer()
                 ErrorView(state: jeuState)
-                Button("Refresh") {
-                    intent.refresh()
-                }
                 Spacer()
             }
         }
