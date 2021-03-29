@@ -3,8 +3,10 @@
 //
 
 import SwiftUI
+import SwiftUIRefresh
 
 struct ListeJeuxView: View {
+    @State private var isShowing = false
     @ObservedObject var listeJeux : GroupeJeuViewModel
     var intent : ListeJeuxIntent
     private var jeuState : LoadingState{
@@ -25,7 +27,6 @@ struct ListeJeuxView: View {
         }
     }
 
-
     init(listeJeux : GroupeJeuViewModel,intent:ListeJeuxIntent){
         self.listeJeux = listeJeux
         self.intent=intent
@@ -38,41 +39,35 @@ struct ListeJeuxView: View {
     }
     @State var text : String = ""
     var body: some View {
-            NavigationView {
-
-                    VStack{
-                        HStack{
-                            Spacer()
-                            TextField("search for ...", text: $text)
-                            Button(action: {filterData(nomJeu: text)}){
-                                Image(systemName: "magnifyingglass")
-                            }
-                            Spacer()
-
+        NavigationView {
+            VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/) {
+                HStack{
+                    Spacer()
+                    TextField("Rechercher ...", text: $text)
+                    Button("Filtrer"){filterData(nomJeu: text)}
+                    Spacer()
+                }
+                List(listeJeux.listeJeux) { game in
+                        NavigationLink(
+                                //change to destination of a game
+                                destination: DetailJeuView(jeu: game)) {
+                            HStack {
+                                Text("\(game.libelleJeu)")
+                                Spacer()
+                            }.foregroundColor(.blue)
                         }
-                        List(listeJeux.listeJeux) { game in
-
-                            NavigationLink(
-                                    //change to destination of a game
-                                    destination: DetailJeuView(jeu: game)) {
-                                HStack {
-                                    Text("\(game.libelleJeu)").font(.system(size: 19, weight:.medium, design:.default))
-                                    Spacer()
-                                }.foregroundColor(.black)
-                            }
-                        }.navigationBarTitle("Liste des jeux")
-                        Spacer()
-                        ErrorView(state: jeuState)
-                        Button("Refresh") {
-                            intent.refresh()
-                        }
-                        Spacer()
+                }.navigationBarTitle("Liste des jeux")
+                .pullToRefresh(isShowing: $isShowing) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        intent.refresh()
+                        self.isShowing = false
                     }
-
-
+                }
+                Spacer()
+                ErrorView(state: jeuState)
+                Spacer()
             }
-
-
+        }
     }
 }
 
@@ -102,10 +97,5 @@ struct ErrorMessage : View{
         VStack{
             Text("Error in search request")
         }
-    }
-}
-struct ListeJeuxView_Previews: PreviewProvider {
-    static var previews: some View {
-        ListeJeuxView(listeJeux: GroupeJeuViewModel(groupeJeu: GroupeJeu(jeux: [Jeu(nomJeu: "TEST", nombreJoueur: "4", ageMinimum: 2, duree:"30m", prototype: true, nomPersonne: "José")])))
     }
 }

@@ -3,10 +3,12 @@
 //
 
 import SwiftUI
+import SwiftUIRefresh
 
 struct ListeEditeurView: View {
 
     @ObservedObject var listeEditeurs : GroupeEditeurViewModel
+    @State private var isShowing = false
     var intent : ListeEditeursIntent
     private var editeurState : LoadingStateEditeur{
         return self.listeEditeurs.loadingStateEditeur
@@ -49,17 +51,31 @@ struct ListeEditeurView: View {
 
                     }
                 }.navigationBarTitle("Liste des éditeurs")
+                        .pullToRefresh(isShowing: $isShowing) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                intent.refresh()
+                                self.isShowing = false
+                            }
+                        }
                 Spacer()
                 ErrorViewEditeur(state: editeurState)
-                Button("Refresh") {
-                    intent.refresh()
-                }
                 Spacer()
             }
-
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .principal) {
+                            HStack {
+                                Text("Liste des éditeurs").font(.headline)
+                                Image("logo180")
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                            }
+                        }
+                    }
         }
     }
 }
+
 
 struct ErrorViewEditeur : View{
     let state : LoadingStateEditeur
