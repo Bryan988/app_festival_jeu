@@ -58,12 +58,14 @@ struct ListeEditeurView: View {
                         NavigationLink(
                                 destination:ListeJeuxView(listejeux: GroupeJeuViewModel(groupeJeu: GroupeJeu(jeux: editeur.games)), nomZone:editeur.nomPersonne)
                         ) {
-                            HStack {
+                            VStack {
+                                Image(systemName: "person.crop.square.fill.and.at.rectangle")
+                                        .resizable()
+                                        .frame(width: 50, height: 50)
                                 Text("\(editeur.nomPersonne) - \(editeur.games.count) Jeu"+(editeur.games.count > 1 ? "x" : ""))
-                                Spacer()
-                            }.foregroundColor(.blue)
+                                        .frame(maxWidth: .infinity, alignment: .center)
+                            }
                         }
-
                     }
                 }.navigationBarTitle("Liste des éditeurs")
                         .pullToRefresh(isShowing: $isShowing) {
@@ -88,7 +90,6 @@ struct ListeEditeurView: View {
         }
     }
 }
-
 
 struct ErrorViewEditeur : View{
     let state : LoadingStateEditeur

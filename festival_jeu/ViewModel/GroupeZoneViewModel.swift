@@ -38,7 +38,6 @@ class GroupeZoneViewModel:Identifiable,ObservableObject{
                 print("error")
             case .initState :
                 self.listeZones.removeAll()
-
             default:
                 return
             }
@@ -63,5 +62,4 @@ class GroupeZoneViewModel:Identifiable,ObservableObject{
     func getZones()->[ZoneViewModel]{
         return self.listeZones
     }
-
 }
