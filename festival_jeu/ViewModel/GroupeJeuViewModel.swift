@@ -36,8 +36,6 @@ class GroupeJeuViewModel:Identifiable,ObservableObject{
                     print(shortNames)
                     self.listeJeux=shortNames
                 }
-
-
             case .initState :
                 self.listeJeux.removeAll()
 
@@ -54,6 +52,7 @@ class GroupeJeuViewModel:Identifiable,ObservableObject{
             self.listeJeux.append(JeuViewModel(jeu: g))
         }
     }
+
     func reInitJeux(){
         self.listeJeux=[]
         for g in groupeJeu.jeux{

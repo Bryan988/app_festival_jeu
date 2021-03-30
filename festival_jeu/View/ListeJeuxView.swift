@@ -45,12 +45,13 @@ struct ListeJeuxView: View {
             VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/) {
                 HStack{
                     Spacer()
-                    TextField("Rechercher ...", text: $text)
+                    TextField("Rechercher ...", text: $text).padding(.top, 10)
                     Button(action: {filterData(nomJeu: text)}){
                         Image(systemName: "magnifyingglass")
                     }
                     Spacer()
                 }
+                ErrorView(state: jeuState).padding(.top, 10)
                 List(listeJeux.listeJeux) { game in
                         NavigationLink(
                                 //change to destination of a game
@@ -78,8 +79,6 @@ struct ListeJeuxView: View {
                     }
                 }
                 Spacer()
-                ErrorView(state: jeuState)
-                Spacer()
             }
         }
     }
@@ -100,11 +99,12 @@ struct ErrorView : View{
                 EmptyView()
             }
             if case let .loaded(data) = state{
-                Text("\(data.count) Jeux présents!")
+                Text(data.count > 1 ? "\(data.count) jeux présents" : "\(data.count) jeu présent")
             }
         }
     }
 }
+
 struct ErrorMessage : View{
     let error :  Error
     var body: some View{

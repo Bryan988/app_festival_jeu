@@ -15,7 +15,6 @@ struct ListeZoneView: View {
     }
 
     init(listeZones l: GroupeZoneViewModel) {
-        print("nice")
         self.listeZones = l
         self.intent = ListeZonesIntent(listeZones: l)
         let _ = self.listeZones.$loadingStateZone.sink(receiveValue: stateChanged)
@@ -52,9 +51,7 @@ struct ListeZoneView: View {
                     }
                     Spacer()
                 }
-                HStack {
-                    ErrorViewZone(state: zoneState).padding(.top, 10)
-                }
+                ErrorViewZone(state: zoneState).padding(.top, 10)
                 List {
                     ForEach(listeZones.listeZones) { zone in
                         NavigationLink(
@@ -109,7 +106,7 @@ struct ErrorViewZone: View {
                 EmptyView()
             }
             if case let .loaded(data) = state {
-                Text("\(data.count) zones présentes")
+                Text(data.count > 1 ? "\(data.count) zones présentes" : "\(data.count) zone présente")
             }
         }
     }

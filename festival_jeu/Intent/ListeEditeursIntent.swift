@@ -30,6 +30,11 @@ class ListeEditeursIntent {
         }
 
     }
+
+    func filterEditeurs(nomEditeur:String){
+        self.listeEditeurs.loadingStateEditeur = .loadingFilter(nomEditeur)
+    }
+
     @objc func refresh(){
         self.listeEditeurs.loadingStateEditeur = .initState
     }

@@ -9,6 +9,7 @@ struct ListeEditeurView: View {
 
     @ObservedObject var listeEditeurs : GroupeEditeurViewModel
     @State private var isShowing = false
+    @State var text: String = ""
     var intent : ListeEditeursIntent
     private var editeurState : LoadingStateEditeur{
         return self.listeEditeurs.loadingStateEditeur
@@ -36,9 +37,22 @@ struct ListeEditeurView: View {
         self.intent.loadEditeurs()
     }
 
+    func filterData(nomEditeur: String) {
+        self.intent.filterEditeurs(nomEditeur: nomEditeur)
+    }
+
     var body: some View {
         NavigationView {
             VStack {
+                HStack {
+                    Spacer()
+                    TextField("Rechercher ...", text: $text).padding(.top, 10)
+                    Button(action: {filterData(nomEditeur: text)}){
+                        Image(systemName: "magnifyingglass")
+                    }
+                    Spacer()
+                }
+                ErrorViewEditeur(state: editeurState).padding(.top, 10)
                 List {
                     ForEach(listeEditeurs.listeEditeurs) { editeur in
                         NavigationLink(
@@ -58,8 +72,6 @@ struct ListeEditeurView: View {
                                 self.isShowing = false
                             }
                         }
-                Spacer()
-                ErrorViewEditeur(state: editeurState)
                 Spacer()
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -93,7 +105,7 @@ struct ErrorViewEditeur : View{
                 EmptyView()
             }
             if case let .loaded(data) = state{
-                Text("\(data.count) éditeurs présentes!")
+                Text(data.count > 1 ? "\(data.count) éditeurs présents" : "\(data.count) éditeur présent")
             }
         }
     }

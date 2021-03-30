@@ -9,6 +9,7 @@ enum LoadingStateEditeur{
     case loading(String)
     case loaded([Editeur])
     case loadingError(Error)
+    case loadingFilter(String)
 }
 
 class GroupeEditeurViewModel:Identifiable,ObservableObject{
@@ -28,6 +29,12 @@ class GroupeEditeurViewModel:Identifiable,ObservableObject{
                 print(self.listeEditeurs)
             case .loadingError:
                 print("error")
+            case let.loadingFilter(nomEditeur):
+                reInitEditeurs()
+                if(nomEditeur != ""){
+                    let shortNames = self.listeEditeurs.filter { $0.nomPersonne.contains(nomEditeur) }
+                    self.listeEditeurs=shortNames
+                }
             case .initState :
                 self.listeEditeurs.removeAll()
             default:
@@ -38,6 +45,13 @@ class GroupeEditeurViewModel:Identifiable,ObservableObject{
 
     init(groupeEditeur:GroupeEditeur) {
         self.groupeEditeur=groupeEditeur
+        self.listeEditeurs=[]
+        for editor in groupeEditeur.editeurs{
+            self.listeEditeurs.append(EditeurViewModel(editeur: editor))
+        }
+    }
+
+    func reInitEditeurs(){
         self.listeEditeurs=[]
         for editor in groupeEditeur.editeurs{
             self.listeEditeurs.append(EditeurViewModel(editeur: editor))
