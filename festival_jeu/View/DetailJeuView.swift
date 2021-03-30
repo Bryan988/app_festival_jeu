@@ -32,12 +32,13 @@ struct DetailJeuView: View{
                         Text("\(jeu.nomPersonne)").foregroundColor(.gray).font(.callout)
                     }
                     HStack{
-                        Image(systemName: "person.3.fill").resizable().frame(width: 18,height: 20)
+                        Image(systemName: "person.3.fill").resizable().frame(width: 24,height: 24)
                         Text("Nombre de joueurs")
                         Spacer()
                         Text("\(jeu.nombreJoueur)").foregroundColor(.gray).font(.callout)
                     }
                     HStack{
+                        Image(systemName: "calendar.badge.exclamationmark").resizable().frame(width: 24,height: 24)
                         Text("Age minimum")
                         Spacer()
                         Text("\(jeu.ageMinimum) ans").foregroundColor(.gray).font(.callout)
@@ -49,6 +50,7 @@ struct DetailJeuView: View{
                         Text("\(jeu.duree)").foregroundColor(.gray).font(.callout)
                     }
                     HStack{
+                        Image(systemName: "hammer.fill").resizable().frame(width: 24,height: 24)
                         Text("Prototype")
                         Spacer()
                         Text(" \(prototype)").foregroundColor(.gray).font(.callout)
