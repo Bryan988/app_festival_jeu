@@ -60,7 +60,17 @@ struct ListeJeuxView: View {
                                 Spacer()
                             }.foregroundColor(.black)
                         }
-                }.navigationBarTitle(nomZone=="" ? "Liste des jeux" : "Jeux \(nomZone)")
+                }.navigationBarTitleDisplayMode(.inline)
+                        .toolbar {
+                            ToolbarItem(placement: .principal) {
+                                HStack {
+                                    Text(nomZone=="" ? "Liste des jeux" : "Jeux \(nomZone)").font(.headline)
+                                    Image("logo180")
+                                            .resizable()
+                                            .frame(width: 30, height: 30)
+                                }
+                            }
+                        }
                 .pullToRefresh(isShowing: $isShowing) {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         intent.refresh()

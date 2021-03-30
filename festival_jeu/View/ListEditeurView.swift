@@ -42,7 +42,8 @@ struct ListeEditeurView: View {
                 List {
                     ForEach(listeEditeurs.listeEditeurs) { editeur in
                         NavigationLink(
-                                destination: DetailEditeurView(editeur: editeur)) {
+                                destination:ListeJeuxView(listejeux: GroupeJeuViewModel(groupeJeu: GroupeJeu(jeux: editeur.games)), nomZone:editeur.nomPersonne)
+                        ) {
                             HStack {
                                 Text("\(editeur.nomPersonne) - \(editeur.games.count) Jeu"+(editeur.games.count > 1 ? "x" : ""))
                                 Spacer()
