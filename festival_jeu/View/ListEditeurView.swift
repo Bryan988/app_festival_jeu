@@ -61,17 +61,17 @@ struct ListeEditeurView: View {
                 ErrorViewEditeur(state: editeurState)
                 Spacer()
             }
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .principal) {
-                            HStack {
-                                Text("Liste des éditeurs").font(.headline)
-                                Image("logo180")
-                                        .resizable()
-                                        .frame(width: 30, height: 30)
-                            }
-                        }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    HStack {
+                        Text("Liste des éditeurs").font(.headline)
+                        Image("logo180")
+                                .resizable()
+                                .frame(width: 30, height: 30)
                     }
+                }
+            }
         }
     }
 }

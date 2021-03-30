@@ -58,7 +58,7 @@ struct ListeJeuxView: View {
                                 Spacer()
                             }.foregroundColor(.black)
                         }
-                }.navigationBarTitle("Liste des jeux")
+                }
                 .pullToRefresh(isShowing: $isShowing) {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         intent.refresh()
@@ -68,6 +68,17 @@ struct ListeJeuxView: View {
                 Spacer()
                 ErrorView(state: jeuState)
                 Spacer()
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    HStack {
+                        Text("Liste des jeux").font(.headline)
+                        Image("logo180")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                    }
+                }
             }
         }
     }
