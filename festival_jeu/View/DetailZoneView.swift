@@ -7,14 +7,16 @@ import SwiftUI
 
 struct DetailZoneView: View{
     var zone : ZoneViewModel
+    var listeJeux : GroupeJeuViewModel
 
     init(zone : ZoneViewModel){
         self.zone = zone
+        self.listeJeux = GroupeJeuViewModel(groupeJeu: GroupeJeu(jeux: zone.games))
     }
 
     var body: some View{
             NavigationView{
-                VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/)
+                VStack
                 {
                     List {
                         Text("Liste des jeux :")

@@ -9,16 +9,22 @@ struct ListeJeuxView: View {
     @State private var isShowing = false
     @ObservedObject var listeJeux : GroupeJeuViewModel
     var intent : ListeJeuxIntent
+    var nomZone : String = ""
     private var jeuState : LoadingState{
         return self.listeJeux.loadingState
     }
+    init(listejeux:GroupeJeuViewModel,nomZone:String){
+        self.listeJeux = listejeux
+        self.intent = ListeJeuxIntent(listeJeux: listejeux)
+        self.nomZone = nomZone
+    }
 
-    init(listeJeux l:GroupeJeuViewModel) {
+    init() {
         print("nice")
-        self.listeJeux  = l
-        self.intent     = ListeJeuxIntent(listeJeux: l)
+        var GjVM : GroupeJeuViewModel =  GroupeJeuViewModel(groupeJeu: GroupeJeu())
+        self.listeJeux  = GjVM
+        self.intent     = ListeJeuxIntent(listeJeux: GjVM)
         let _  = self.listeJeux.$loadingState.sink(receiveValue: stateChanged)
-
     }
     func stateChanged(state:LoadingState){
         switch state {
@@ -27,10 +33,6 @@ struct ListeJeuxView: View {
         }
     }
 
-    init(listeJeux : GroupeJeuViewModel,intent:ListeJeuxIntent){
-        self.listeJeux = listeJeux
-        self.intent=intent
-    }
     func loadData(){
         self.intent.loadJeux()
     }
@@ -58,7 +60,7 @@ struct ListeJeuxView: View {
                                 Spacer()
                             }.foregroundColor(.black)
                         }
-                }.navigationBarTitle("Liste des jeux")
+                }.navigationBarTitle(nomZone=="" ? "Liste des jeux" : "Jeux \(nomZone)")
                 .pullToRefresh(isShowing: $isShowing) {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         intent.refresh()

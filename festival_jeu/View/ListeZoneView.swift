@@ -58,7 +58,8 @@ struct ListeZoneView: View {
                 List {
                     ForEach(listeZones.listeZones) { zone in
                         NavigationLink(
-                                destination: DetailZoneView(zone: zone)) {
+                                destination: ListeJeuxView(listejeux: GroupeJeuViewModel(groupeJeu: GroupeJeu(jeux: zone.games)),nomZone:zone.libelleZone)
+                        ) {
                             VStack{
                                 Image("zone")
                                         .resizable()
