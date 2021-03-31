@@ -12,5 +12,4 @@ class Editeur {
         self.nomPersonne = nomPersonne
         self.games = games
     }
-
 }

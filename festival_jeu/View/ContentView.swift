@@ -15,7 +15,6 @@ struct ContentView: View {
     @State private var tabSelected = 1
 
     var body: some View {
-
         TabView(selection: $tabSelected){
             ListeZoneView(listeZones: ZoneVM)
                     .tabItem {Label("Zones",systemImage : "mappin.and.ellipse")}.tag(0)

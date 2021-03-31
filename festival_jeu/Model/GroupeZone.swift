@@ -9,11 +9,12 @@ class GroupeZone{
 
     init(zones: [Zone]) {
         self.zones = zones
-        print(self.zones)
     }
+
     init(){
         self.zones=[]
     }
+
     func new(zones:[Zone]){
         self.zones=zones
     }

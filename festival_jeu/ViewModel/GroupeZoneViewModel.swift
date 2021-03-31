@@ -26,12 +26,10 @@ class GroupeZoneViewModel:Identifiable,ObservableObject{
                 for g in data{
                     self.listeZones.append(ZoneViewModel(zone: g))
                 }
-                print(self.listeZones)
             case let.loadingFilter(libelleZone):
                 reInitZones()
                 if(libelleZone != ""){
                     let shortNames = self.listeZones.filter { $0.libelleZone.contains(libelleZone) }
-                    print(shortNames)
                     self.listeZones=shortNames
                 }
             case .loadingError:

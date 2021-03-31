@@ -4,7 +4,6 @@
 
 import Foundation
 
-
 class ZoneViewModel:Identifiable{
     let id = UUID()
     private var zone:Zone
@@ -16,5 +15,4 @@ class ZoneViewModel:Identifiable{
         self.libelleZone = zone.libelleZone
         self.games = zone.games
     }
-
 }

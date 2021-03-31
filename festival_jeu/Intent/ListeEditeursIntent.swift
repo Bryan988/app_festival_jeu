@@ -21,14 +21,12 @@ class ListeEditeursIntent {
     func JSONEDITEURLoaded(result: Result<[Editeur],HttpRequestError>) {
         switch result {
         case let .success(data):
-            print(data)
             self.listeEditeurs.loadingStateEditeur = .loaded(data)
             break;
         case let .failure(error):
             print(error)
             break;
         }
-
     }
 
     func filterEditeurs(nomEditeur:String){

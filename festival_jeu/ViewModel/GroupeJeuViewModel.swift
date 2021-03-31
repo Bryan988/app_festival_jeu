@@ -25,15 +25,12 @@ class GroupeJeuViewModel:Identifiable,ObservableObject{
                 for g in data{
                     self.listeJeux.append(JeuViewModel(jeu: g))
                 }
-                print(self.listeJeux)
-
             case .loadingError:
                 print("error")
             case let.loadingFilter(nomJeu):
                 reInitJeux()
                 if(nomJeu != ""){
                     let shortNames = self.listeJeux.filter { $0.libelleJeu.contains(nomJeu) }
-                    print(shortNames)
                     self.listeJeux=shortNames
                 }
             case .initState :

@@ -25,7 +25,6 @@ struct EditeurData : Codable {
     var games:[GameData]
 }
 
-
 struct JeuHelper{
 
     // Translate a list of gamesData into a list of games
@@ -136,7 +135,6 @@ struct JeuHelper{
             (result: Result<[EditeurData], HttpRequestError>) in
             switch result{
             case let .success(data):
-                print(data)
                 guard let editeurs = JeuHelper.editeurData2editeur(data: data) else {
                     endofrequest(.failure(.JsonDecodingFailed))
                     return

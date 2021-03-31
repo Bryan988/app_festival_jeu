@@ -20,15 +20,14 @@ struct ListeJeuxView: View {
     }
 
     init(listeJeux l: GroupeJeuViewModel) {
-
         self.listeJeux  = l
         self.intent     = ListeJeuxIntent(listeJeux: l)
         let _  = self.listeJeux.$loadingState.sink(receiveValue: stateChanged)
     }
+
     func stateChanged(state:LoadingState){
         switch state {
         case .initState :
-            print("refresh State")
             self.intent.loadJeux()
         default:break
         }
@@ -37,50 +36,51 @@ struct ListeJeuxView: View {
     func loadData(){
         self.intent.loadJeux()
     }
+
     func filterData(nomJeu:String){
         self.intent.filterJeux(nomJeu:nomJeu)
     }
+
     @State var text : String = ""
 
     func gameView() -> some View {
         return (
-                VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/) {
-                    HStack{
-                        Spacer()
-                        TextField("Rechercher ...", text: $text).onChange(of: text, perform: {newValue in
-                                    filterData(nomJeu: text)
-                                })
-                                .padding(.top, 20).padding(.bottom, 10)
-                        Image(systemName: "magnifyingglass").foregroundColor(.blue)
-                        Spacer()
+            VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/) {
+                HStack{
+                    Spacer()
+                    TextField("Rechercher ...", text: $text).onChange(of: text, perform: {newValue in
+                                filterData(nomJeu: text)
+                            })
+                            .padding(.top, 20).padding(.bottom, 10)
+                    Image(systemName: "magnifyingglass").foregroundColor(.blue)
+                    Spacer()
+                }
+                Divider()
+                ErrorView(state: jeuState).padding(.top, 10).padding(.bottom, 10)
+                List(listeJeux.listeJeux) { game in
+                    NavigationLink(
+                            //change to destination of a game
+                            destination: DetailJeuView(jeu: game)) {
+                        HStack {
+                            Text("\(game.libelleJeu)")
+                            Spacer()
+                        }.foregroundColor(.black)
                     }
-                    Divider()
-                    ErrorView(state: jeuState).padding(.top, 10).padding(.bottom, 10)
-                    List(listeJeux.listeJeux) { game in
-                        NavigationLink(
-                                //change to destination of a game
-                                destination: DetailJeuView(jeu: game)) {
-                            HStack {
-                                Text("\(game.libelleJeu)")
-                                Spacer()
-                            }.foregroundColor(.black)
-                        }
-                    }
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .principal) {
-                            HStack {
-                                Text(nomZone=="" ? "Liste des jeux" : "Jeux \(nomZone)").font(.headline)
-                                Image("logo180")
-                                        .resizable()
-                                        .frame(width: 30, height: 30)
-                            }
+                }
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        HStack {
+                            Text(nomZone=="" ? "Liste des jeux" : "Jeux \(nomZone)").font(.headline)
+                            Image("logo180")
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
                         }
                     }
                 }
+            }
         )
     }
-
 
     var body: some View {
         if(self.nomZone  == "") {
@@ -99,7 +99,6 @@ struct ListeJeuxView: View {
         }
     }
 }
-
 
 struct ErrorView : View{
     let state : LoadingState

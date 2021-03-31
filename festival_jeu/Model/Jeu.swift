@@ -22,5 +22,4 @@ class Jeu:Identifiable {
         self.prototype = prototype
         self.nomPersonne=nomPersonne
     }
-
 }

@@ -9,11 +9,12 @@ class GroupeEditeur{
 
     init(editeurs: [Editeur]) {
         self.editeurs = editeurs
-        print(self.editeurs)
     }
+
     init(){
         self.editeurs=[]
     }
+
     func new(editeurs:[Editeur]){
         self.editeurs=editeurs
     }

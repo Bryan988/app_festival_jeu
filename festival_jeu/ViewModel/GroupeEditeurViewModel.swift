@@ -26,7 +26,6 @@ class GroupeEditeurViewModel:Identifiable,ObservableObject{
                 for editor in data{
                     self.listeEditeurs.append(EditeurViewModel(editeur: editor))
                 }
-                print(self.listeEditeurs)
             case .loadingError:
                 print("error")
             case let.loadingFilter(nomEditeur):

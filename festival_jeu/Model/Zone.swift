@@ -12,5 +12,4 @@ class Zone {
         self.libelleZone = libelleZone
         self.games = games
     }
-
 }

@@ -23,14 +23,12 @@ class ListeZonesIntent{
     func JSONZONELoaded(result: Result<[Zone],HttpRequestError>) {
         switch result {
         case let .success(data):
-            print(data)
             self.listeZones.loadingStateZone = .loaded(data)
             break;
         case let .failure(error):
             print(error)
             break;
         }
-
     }
 
     func filterZones(nomZone:String){
@@ -40,5 +38,4 @@ class ListeZonesIntent{
     func refresh(){
         self.listeZones.loadingStateZone = .initState
     }
-
 }

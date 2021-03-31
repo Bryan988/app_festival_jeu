@@ -23,7 +23,6 @@ struct ListeZoneView: View {
     func stateChanged(state: LoadingStateZone) {
         switch state {
         case .initState:
-            print("Refresh STATE")
             self.intent.loadZones()
         default:break
         }
@@ -62,7 +61,7 @@ struct ListeZoneView: View {
                                 destination: ListeJeuxView(listejeux: GroupeJeuViewModel(groupeJeu: GroupeJeu(jeux: zone.games)),nomZone:zone.libelleZone)
                         ) {
                             VStack{
-                                Image("zone")
+                                Image(systemName: "map")
                                         .resizable()
                                         .frame(width: 50, height: 50)
                                 Text("\(zone.libelleZone) - \(zone.games.count) Jeu" + (zone.games.count > 1 ? "x" : ""))
@@ -92,7 +91,6 @@ struct ListeZoneView: View {
         }
     }
 }
-
 
 struct ErrorViewZone: View {
     let state: LoadingStateZone
