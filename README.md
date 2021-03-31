@@ -14,3 +14,17 @@ On peut nottement y voir :
 * Les Editeurs
   * Les jeux par éditeur
   
+## Installation 
+
+``` 
+git clone https://github.com/Bryan988/app_festival_jeu.git
+```
+
+## Architecture 
+
+![image](https://user-images.githubusercontent.com/55983043/113162475-9ed0a180-923f-11eb-8602-19d5f942ba04.png)
+
+Cette application est basée sur la pattern MVI. 
+
+![image](https://user-images.githubusercontent.com/55983043/113166108-c07f5800-9242-11eb-8b7f-ee3cff1640ae.png)
+
