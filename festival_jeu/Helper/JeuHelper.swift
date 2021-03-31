@@ -11,6 +11,7 @@ struct GameData : Codable {
     var duree:String
     var prototype:Bool
     var nomPersonne:String
+    var zones:[String]?
 }
 
 //data for zone
@@ -32,21 +33,10 @@ struct JeuHelper{
         var games = [Jeu]()
         for game in data{
             let newGame = Jeu(nomJeu: game.libelleJeu,nombreJoueur: game.nombreJoueur, ageMinimum: game.ageMinimum,
-                    duree: game.duree,prototype: game.prototype, nomPersonne: game.nomPersonne)
+                    duree: game.duree,prototype: game.prototype, nomPersonne: game.nomPersonne, zones : game.zones)
             games.append(newGame)
         }
         return games
-    }
-
-    // Translate a list of games into a list of games data
-    static func game2GameData(data: [Jeu]) -> [GameData]{
-        var gamesData = [GameData]()
-        for game in data{
-            let gameData = GameData(libelleJeu: game.libelleJeu,nombreJoueur: game.nombreJoueur, ageMinimum: game.ageMinimum,
-                    duree: game.duree,prototype: game.prototype, nomPersonne: game.nomPersonne)
-            gamesData.append(gameData)
-        }
-        return gamesData
     }
 
     // We ask the server to retrieve all the games
@@ -79,7 +69,7 @@ struct JeuHelper{
             if(zone.libelleZone != "Indéfinie"){
                 for game in zone.games{
                     let gameData = Jeu(nomJeu: game.libelleJeu,nombreJoueur: game.nombreJoueur, ageMinimum: game.ageMinimum,
-                            duree: game.duree,prototype: game.prototype, nomPersonne: game.nomPersonne)
+                            duree: game.duree,prototype: game.prototype, nomPersonne: game.nomPersonne, zones: game.zones)
                     games.append(gameData)
                 }
 
@@ -119,7 +109,7 @@ struct JeuHelper{
             var games = [Jeu]()
             for game in editeur.games{
                 let gameData = Jeu(nomJeu: game.libelleJeu,nombreJoueur: game.nombreJoueur, ageMinimum: game.ageMinimum,
-                        duree: game.duree,prototype: game.prototype, nomPersonne: editeur.nomPersonne)
+                        duree: game.duree,prototype: game.prototype, nomPersonne: editeur.nomPersonne, zones: game.zones)
                 games.append(gameData)
             }
             let newEditeur = Editeur(nomPersonne: editeur.nomPersonne,games: games)

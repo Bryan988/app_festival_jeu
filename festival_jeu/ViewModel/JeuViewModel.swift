@@ -14,6 +14,7 @@ class JeuViewModel:Identifiable{
     private(set) var duree:String
     private(set) var prototype:Bool
     private(set) var nomPersonne:String
+    private(set) var zones:[String]?
 
     init(jeu: Jeu) {
         self.jeu = jeu
@@ -23,5 +24,6 @@ class JeuViewModel:Identifiable{
         self.duree = jeu.duree
         self.prototype = jeu.prototype
         self.nomPersonne=jeu.nomPersonne
+        self.zones = jeu.zones
     }
 }

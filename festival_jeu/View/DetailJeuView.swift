@@ -14,6 +14,28 @@ struct DetailJeuView: View{
         self.prototype = (jeu.prototype ? "Oui" : "Non")
     }
 
+    func zones() -> some View{
+        return(
+            Group{
+                if let zones = jeu.zones {
+                    HStack{
+                        Image(systemName: "map").resizable().frame(width: 24,height: 24)
+                        Text(zones.count > 1 ? "Zones" : "Zone")
+                        Spacer()
+                        VStack{
+                            ForEach(zones) { zone in
+                                Text("\(zone)").foregroundColor(.gray).font(.callout)
+                            }
+                        }
+                    }
+                }
+                else{
+                    EmptyView()
+                }
+            }
+        )
+    }
+
     var body: some View{
         VStack{
             Image("logo180")
@@ -56,6 +78,7 @@ struct DetailJeuView: View{
                     Spacer()
                     Text(" \(prototype)").foregroundColor(.gray).font(.callout)
                 }
+                self.zones()
             }
         }
     }

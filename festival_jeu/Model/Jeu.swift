@@ -13,13 +13,15 @@ class Jeu:Identifiable {
     private(set) var duree:String
     private(set) var prototype:Bool
     private(set) var nomPersonne:String
+    private(set) var zones:[String]?
 
-    init(nomJeu: String, nombreJoueur: String, ageMinimum: Int, duree: String, prototype: Bool,nomPersonne:String) {
+    init(nomJeu: String, nombreJoueur: String, ageMinimum: Int, duree: String, prototype: Bool,nomPersonne:String, zones: [String]?) {
         self.libelleJeu = nomJeu
         self.nombreJoueur = nombreJoueur
         self.ageMinimum = ageMinimum
         self.duree = duree
         self.prototype = prototype
         self.nomPersonne=nomPersonne
+        self.zones = zones
     }
 }

@@ -16,3 +16,9 @@ struct festival_jeuApp: App {
         }
     }
 }
+
+extension String: Identifiable {
+    public var id: String {
+        self
+    }
+}
