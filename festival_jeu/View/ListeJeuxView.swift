@@ -47,10 +47,11 @@ struct ListeJeuxView: View {
                 VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/) {
                     HStack{
                         Spacer()
-                        TextField("Rechercher ...", text: $text).padding(.top, 20).padding(.bottom, 10)
-                        Button(action: {filterData(nomJeu: text)}){
-                            Image(systemName: "magnifyingglass")
-                        }
+                        TextField("Rechercher ...", text: $text).onChange(of: text, perform: {newValue in
+                                    filterData(nomJeu: text)
+                                })
+                                .padding(.top, 20).padding(.bottom, 10)
+                        Image(systemName: "magnifyingglass").foregroundColor(.blue)
                         Spacer()
                     }
                     Divider()

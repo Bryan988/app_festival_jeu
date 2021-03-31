@@ -46,10 +46,11 @@ struct ListeEditeurView: View {
             VStack {
                 HStack {
                     Spacer()
-                    TextField("Rechercher ...", text: $text).padding(.top, 20).padding(.bottom, 10)
-                    Button(action: {filterData(nomEditeur: text)}){
-                        Image(systemName: "magnifyingglass")
-                    }
+                    TextField("Rechercher ...", text: $text).onChange(of: text, perform: {newValue in
+                                filterData(nomEditeur: text)
+                            })
+                            .padding(.top, 20).padding(.bottom, 10)
+                    Image(systemName: "magnifyingglass").foregroundColor(.blue)
                     Spacer()
                 }
                 Divider()
