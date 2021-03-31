@@ -22,7 +22,9 @@ struct ListeZoneView: View {
 
     func stateChanged(state: LoadingStateZone) {
         switch state {
-        case .initState: self.intent.loadZones()
+        case .initState:
+            print("Refresh STATE")
+            self.intent.loadZones()
         default:break
         }
     }
@@ -45,13 +47,14 @@ struct ListeZoneView: View {
             VStack {
                 HStack {
                     Spacer()
-                    TextField("Rechercher ...", text: $text).padding(.top, 10)
+                    TextField("Rechercher ...", text: $text).padding(.top, 20).padding(.bottom, 10)
                     Button(action: {filterData(nomZone: text)}){
                         Image(systemName: "magnifyingglass")
                     }
                     Spacer()
                 }
-                ErrorViewZone(state: zoneState).padding(.top, 10)
+                Divider()
+                ErrorViewZone(state: zoneState).padding(.top, 10).padding(.bottom, 10)
                 List {
                     ForEach(listeZones.listeZones) { zone in
                         NavigationLink(
@@ -73,7 +76,6 @@ struct ListeZoneView: View {
                                 self.isShowing = false
                             }
                         }
-                Spacer()
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -98,15 +100,16 @@ struct ErrorViewZone: View {
             switch state {
             case .loading:
                 ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .blue))
-                        .scaleEffect(3)
+                        .progressViewStyle(CircularProgressViewStyle(tint: .gray))
+                        .scaleEffect(1.5)
             case .loadingError(let error):
                 ErrorMessage(error: error)
             default:
                 EmptyView()
             }
             if case let .loaded(data) = state {
-                Text(data.count > 1 ? "\(data.count) zones présentes" : "\(data.count) zone présente")
+                Text(data.count > 1 ? "\(data.count) zones présentes" : "\(data.count) zone présente").italic()
+                        .bold().foregroundColor(.blue)
             }
         }
     }

@@ -46,13 +46,14 @@ struct ListeEditeurView: View {
             VStack {
                 HStack {
                     Spacer()
-                    TextField("Rechercher ...", text: $text).padding(.top, 10)
+                    TextField("Rechercher ...", text: $text).padding(.top, 20).padding(.bottom, 10)
                     Button(action: {filterData(nomEditeur: text)}){
                         Image(systemName: "magnifyingglass")
                     }
                     Spacer()
                 }
-                ErrorViewEditeur(state: editeurState).padding(.top, 10)
+                Divider()
+                ErrorViewEditeur(state: editeurState).padding(.top, 10).padding(.bottom, 10)
                 List {
                     ForEach(listeEditeurs.listeEditeurs) { editeur in
                         NavigationLink(
@@ -61,7 +62,7 @@ struct ListeEditeurView: View {
                             VStack {
                                 Image(systemName: "person.crop.square.fill.and.at.rectangle")
                                         .resizable()
-                                        .frame(width: 50, height: 50)
+                                        .frame(width: 65, height: 50)
                                 Text("\(editeur.nomPersonne) - \(editeur.games.count) Jeu"+(editeur.games.count > 1 ? "x" : ""))
                                         .frame(maxWidth: .infinity, alignment: .center)
                             }
@@ -74,7 +75,6 @@ struct ListeEditeurView: View {
                                 self.isShowing = false
                             }
                         }
-                Spacer()
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -98,15 +98,16 @@ struct ErrorViewEditeur : View{
             switch state{
             case .loading:
                 ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .blue))
-                        .scaleEffect(3)
+                        .progressViewStyle(CircularProgressViewStyle(tint: .gray))
+                        .scaleEffect(1.5)
             case .loadingError(let error):
                 ErrorMessage(error: error)
             default:
                 EmptyView()
             }
             if case let .loaded(data) = state{
-                Text(data.count > 1 ? "\(data.count) éditeurs présents" : "\(data.count) éditeur présent")
+                Text(data.count > 1 ? "\(data.count) éditeurs présents" : "\(data.count) éditeur présent").italic()
+                        .bold().foregroundColor(.blue)
             }
         }
     }

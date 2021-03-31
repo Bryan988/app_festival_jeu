@@ -37,7 +37,7 @@ class ListeZonesIntent{
         self.listeZones.loadingStateZone = .loadingFilter(nomZone)
     }
 
-    @objc func refresh(){
+    func refresh(){
         self.listeZones.loadingStateZone = .initState
     }
 

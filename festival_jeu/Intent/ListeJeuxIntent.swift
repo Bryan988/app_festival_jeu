@@ -42,8 +42,10 @@ class ListeJeuxIntent{
     }
 
 
-    func refresh(){
+    @objc func refresh(){
         self.listeJeux.loadingState = .initState
+        print("HELLO")
+
     }
 
 }

@@ -19,16 +19,17 @@ struct ListeJeuxView: View {
         self.nomZone = nomZone
     }
 
-    init() {
-        print("nice")
-        var GjVM : GroupeJeuViewModel =  GroupeJeuViewModel(groupeJeu: GroupeJeu())
-        self.listeJeux  = GjVM
-        self.intent     = ListeJeuxIntent(listeJeux: GjVM)
+    init(listeJeux l: GroupeJeuViewModel) {
+
+        self.listeJeux  = l
+        self.intent     = ListeJeuxIntent(listeJeux: l)
         let _  = self.listeJeux.$loadingState.sink(receiveValue: stateChanged)
     }
     func stateChanged(state:LoadingState){
         switch state {
-        case .initState : self.intent.loadJeux()
+        case .initState :
+            print("refresh State")
+            self.intent.loadJeux()
         default:break
         }
     }
@@ -40,19 +41,21 @@ struct ListeJeuxView: View {
         self.intent.filterJeux(nomJeu:nomJeu)
     }
     @State var text : String = ""
-    var body: some View {
-        NavigationView {
-            VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/) {
-                HStack{
-                    Spacer()
-                    TextField("Rechercher ...", text: $text).padding(.top, 10)
-                    Button(action: {filterData(nomJeu: text)}){
-                        Image(systemName: "magnifyingglass")
+
+    func gameView() -> some View {
+        return (
+                VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/) {
+                    HStack{
+                        Spacer()
+                        TextField("Rechercher ...", text: $text).padding(.top, 20).padding(.bottom, 10)
+                        Button(action: {filterData(nomJeu: text)}){
+                            Image(systemName: "magnifyingglass")
+                        }
+                        Spacer()
                     }
-                    Spacer()
-                }
-                ErrorView(state: jeuState).padding(.top, 10)
-                List(listeJeux.listeJeux) { game in
+                    Divider()
+                    ErrorView(state: jeuState).padding(.top, 10).padding(.bottom, 10)
+                    List(listeJeux.listeJeux) { game in
                         NavigationLink(
                                 //change to destination of a game
                                 destination: DetailJeuView(jeu: game)) {
@@ -61,28 +64,41 @@ struct ListeJeuxView: View {
                                 Spacer()
                             }.foregroundColor(.black)
                         }
-                }.navigationBarTitleDisplayMode(.inline)
-                        .toolbar {
-                            ToolbarItem(placement: .principal) {
-                                HStack {
-                                    Text(nomZone=="" ? "Liste des jeux" : "Jeux \(nomZone)").font(.headline)
-                                    Image("logo180")
-                                            .resizable()
-                                            .frame(width: 30, height: 30)
-                                }
+                    }
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .principal) {
+                            HStack {
+                                Text(nomZone=="" ? "Liste des jeux" : "Jeux \(nomZone)").font(.headline)
+                                Image("logo180")
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
                             }
                         }
+                    }
+                }
+        )
+    }
+
+
+    var body: some View {
+        if(self.nomZone  == "") {
+            NavigationView {
+                self.gameView()
                 .pullToRefresh(isShowing: $isShowing) {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         intent.refresh()
                         self.isShowing = false
                     }
                 }
-                Spacer()
             }
+        }
+        else {
+            self.gameView()
         }
     }
 }
+
 
 struct ErrorView : View{
     let state : LoadingState
@@ -91,15 +107,16 @@ struct ErrorView : View{
             switch state{
             case .loading:
                 ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .blue))
-                        .scaleEffect(3)
+                        .progressViewStyle(CircularProgressViewStyle(tint: .gray))
+                        .scaleEffect(1.5)
             case .loadingError(let error):
                 ErrorMessage(error: error)
             default:
                 EmptyView()
             }
             if case let .loaded(data) = state{
-                Text(data.count > 1 ? "\(data.count) jeux présents" : "\(data.count) jeu présent")
+                Text(data.count > 1 ? "\(data.count) jeux présents" : "\(data.count) jeu présent").italic()
+                        .bold().foregroundColor(.blue)
             }
         }
     }
