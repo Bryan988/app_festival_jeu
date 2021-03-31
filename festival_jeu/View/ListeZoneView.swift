@@ -53,8 +53,10 @@ struct ListeZoneView: View {
                     Image(systemName: "magnifyingglass").foregroundColor(.blue)
                     Spacer()
                 }
-                Divider()
-                ErrorViewZone(state: zoneState).padding(.top, 10).padding(.bottom, 10)
+                ErrorViewZone(state: zoneState)
+                if(self.listeZones.listeZones.count == 0){
+                    Text("Il n'y a actuellement pas de zone à afficher").padding(.top, 10)
+                }
                 List {
                     ForEach(listeZones.listeZones) { zone in
                         NavigationLink(
@@ -104,11 +106,11 @@ struct ErrorViewZone: View {
             case .loadingError(let error):
                 ErrorMessage(error: error)
             default:
-                EmptyView()
+                Divider()
             }
             if case let .loaded(data) = state {
                 Text(data.count > 1 ? "\(data.count) zones présentes" : "\(data.count) zone présente").italic()
-                        .bold().foregroundColor(.blue)
+                        .bold().foregroundColor(.blue).padding(.top, 10).padding(.bottom, 10)
             }
         }
     }

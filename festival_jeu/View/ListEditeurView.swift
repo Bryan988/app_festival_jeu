@@ -54,7 +54,10 @@ struct ListeEditeurView: View {
                     Spacer()
                 }
                 Divider()
-                ErrorViewEditeur(state: editeurState).padding(.top, 10).padding(.bottom, 10)
+                ErrorViewEditeur(state: editeurState)
+                if(self.listeEditeurs.listeEditeurs.count == 0){
+                    Text("Il n'y a pas actuellement d'éditeur à afficher").padding(.top, 10)
+                }
                 List {
                     ForEach(listeEditeurs.listeEditeurs) { editeur in
                         NavigationLink(
@@ -108,7 +111,7 @@ struct ErrorViewEditeur : View{
             }
             if case let .loaded(data) = state{
                 Text(data.count > 1 ? "\(data.count) éditeurs présents" : "\(data.count) éditeur présent").italic()
-                        .bold().foregroundColor(.blue)
+                        .bold().foregroundColor(.blue).padding(.top, 10).padding(.bottom, 10)
             }
         }
     }
