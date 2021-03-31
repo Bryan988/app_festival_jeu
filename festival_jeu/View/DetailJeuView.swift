@@ -21,6 +21,7 @@ struct DetailJeuView: View{
                 .aspectRatio(contentMode: .fill)
                 .frame(width : 150,height:150)
                 .clipped()
+                .background(Color.gray)
                 .cornerRadius(150)
                 .shadow(radius:3)
             Text("\(jeu.libelleJeu)").font(.title)
@@ -32,7 +33,7 @@ struct DetailJeuView: View{
                     Text("\(jeu.nomPersonne)").foregroundColor(.gray).font(.callout)
                 }
                 HStack{
-                    Image(systemName: "person.3.fill").resizable().frame(width: 24,height: 24)
+                    Image(systemName: "person.3.fill").resizable().frame(width: 25,height: 15)
                     Text("Nombre de joueurs")
                     Spacer()
                     Text("\(jeu.nombreJoueur)").foregroundColor(.gray).font(.callout)
