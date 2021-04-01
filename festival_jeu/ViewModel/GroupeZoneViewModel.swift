@@ -29,7 +29,7 @@ class GroupeZoneViewModel:Identifiable,ObservableObject{
             case let.loadingFilter(libelleZone):
                 reInitZones()
                 if(libelleZone != ""){
-                    let shortNames = self.listeZones.filter { $0.libelleZone.contains(libelleZone) }
+                    let shortNames = (self.listeZones).filter { ($0.libelleZone.lowercased()).contains(libelleZone.lowercased()) }
                     self.listeZones=shortNames
                 }
             case .loadingError:

@@ -30,7 +30,7 @@ class GroupeJeuViewModel:Identifiable,ObservableObject{
             case let.loadingFilter(nomJeu):
                 reInitJeux()
                 if(nomJeu != ""){
-                    let shortNames = self.listeJeux.filter { $0.libelleJeu.contains(nomJeu) }
+                    let shortNames = self.listeJeux.filter { ($0.libelleJeu.lowercased()).contains(nomJeu.lowercased()) }
                     self.listeJeux=shortNames
                 }
             case .initState :

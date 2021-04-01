@@ -31,7 +31,7 @@ class GroupeEditeurViewModel:Identifiable,ObservableObject{
             case let.loadingFilter(nomEditeur):
                 reInitEditeurs()
                 if(nomEditeur != ""){
-                    let shortNames = self.listeEditeurs.filter { $0.nomPersonne.contains(nomEditeur) }
+                    let shortNames = self.listeEditeurs.filter { ($0.nomPersonne.lowercased()).contains(nomEditeur.lowercased()) }
                     self.listeEditeurs=shortNames
                 }
             case .initState :
