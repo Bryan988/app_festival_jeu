@@ -7,7 +7,7 @@ Cette API permet de gérer le festival des jeux qui se déroule à Montpellier a
 Lien API correspondante : https://github.com/LeoMld/festival_jeu
 
 Cette application mobile permet donc de visualiser les données du festival courant.  
-On peut nottement y voir : 
+On peut notamment y voir : 
 * La liste des jeux
 * Les Zones
   * Les jeux par zone
