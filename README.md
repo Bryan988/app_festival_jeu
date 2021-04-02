@@ -26,5 +26,6 @@ git clone https://github.com/Bryan988/app_festival_jeu.git
 
 Cette application est basée sur la pattern MVI, ci-dessous un exemple lors de l'affichage des jeux du festival courant :
 
-![image](https://user-images.githubusercontent.com/55983043/113166108-c07f5800-9242-11eb-8b7f-ee3cff1640ae.png)
+![Image](https://user-images.githubusercontent.com/57149182/113434786-e131e400-93e1-11eb-84b7-70160a8678e3.png)
+
 
